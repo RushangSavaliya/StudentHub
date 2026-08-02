@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="StudentHub administrator dashboard.">
+<title>StudentHub | Admin Dashboard</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<div class="layout-dash">
+  <div class="dash-body">
+    <aside class="sidebar">
+      <div class="sidebar-brand"><img src="../img/logo.jpg" alt="StudentHub logo"><div><div class="title">StudentHub</div><div class="small">Admin Portal</div></div></div>
+
+      <nav class="side-nav" aria-label="Administrator navigation">
+        <a aria-current="page" href="admin_dash.html">Dashboard</a>
+        <a href="admin_profile.html">Admin Profile</a>
+        <a href="manage_student.html">Manage Students</a>
+        <a href="manage_events.html">Manage Events</a>
+        <a href="login.html">Logout</a>
+      </nav>
+
+    </aside>
+    <main class="dashboard-main" id="main-content">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="../index.html">Home</a></li>
+          <li aria-current="page">Admin Dashboard</li>
+        </ol>
+      </nav>
+      <header class="dashboard-header"><h1>Admin Dashboard</h1><span>Admin Name</span></header>
+      <div class="section-title"><h2>Dashboard Overview</h2><p>Quick summary of portal activity.</p></div>
+      <div class="stats four">
+        <div class="stat"><h3>Total Students</h3><strong>1,250</strong></div>
+        <div class="stat"><h3>Total Events</h3><strong>25</strong></div>
+        <div class="stat"><h3>Upcoming Events</h3><strong>8</strong></div>
+        <div class="stat"><h3>New Feedback</h3><strong>15</strong></div>
+      </div>
+      <div class="section-title"><h2>Quick Actions</h2></div>
+      <div class="grid-2">
+        <article class="card"><div class="placeholder">Students</div><h3>Manage Students</h3><p>View and manage student records.</p><a class="link-btn" href="manage_student.html">Manage Students</a></article>
+        <article class="card"><div class="placeholder">Events</div><h3>Manage Events</h3><p>Create and manage college events.</p><a class="link-btn" href="manage_events.html">Manage Events</a></article>
+      </div>
+      <div style="margin-top:16px" class="note">
+        <h2>Recent Activity</h2>
+        <p>New student registration was received.</p>
+        <p>A new college event was added to the portal.</p>
+        <p>An administrator profile was recently updated.</p>
+      </div>
+    </main>
+  </div>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>&copy; 2026 StudentHub. All rights reserved.</span>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

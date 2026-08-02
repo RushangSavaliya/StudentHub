@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="StudentHub event management page for administrators.">
+<title>StudentHub | Manage Events</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<div class="layout-dash">
+  <div class="dash-body">
+    <aside class="sidebar">
+      <div class="sidebar-brand"><img src="../img/logo.jpg" alt="StudentHub logo"><div><div class="title">StudentHub</div><div class="small">Admin Portal</div></div></div>
+      <nav class="side-nav" aria-label="Administrator navigation">
+        <a href="admin_dash.html">Dashboard</a>
+        <a href="admin_profile.html">Admin Profile</a>
+        <a href="manage_student.html">Manage Students</a>
+        <a aria-current="page" href="manage_events.html">Manage Events</a>
+        <a href="login.html">Logout</a>
+      </nav>
+    </aside>
+    <main class="dashboard-main" id="main-content">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="admin_dash.html">Dashboard</a></li>
+          <li aria-current="page">Manage Events</li>
+        </ol>
+      </nav>
+      <header class="dashboard-header"><h1>Manage Events</h1><span>Event Records</span></header>
+      <section class="card">
+        <h2>Add New Event</h2>
+        <form action="#" method="post">
+          <fieldset>
+            <legend>Event Information</legend>
+            <div class="form-group"><label for="event-name">Event Name</label><input type="text" id="event-name" name="event_name" required></div>
+            <div class="form-group"><label for="event-date">Event Date</label><input type="date" id="event-date" name="event_date" required></div>
+            <div class="form-group"><label for="event-time">Event Time</label><input type="time" id="event-time" name="event_time" required></div>
+            <div class="form-group"><label for="event-location">Location</label><input type="text" id="event-location" name="event_location" required></div>
+            <div class="form-group"><label for="event-description">Description</label><textarea id="event-description" name="event_description" required></textarea></div>
+            <div class="form-actions"><input type="submit" value="Add Event"><input type="reset" value="Clear"></div>
+          </fieldset>
+        </form>
+      </section>
+      <section style="margin-top:16px">
+        <h2>Existing Events</h2>
+        <div class="table-wrap">
+          <table>
+            <caption>Current College Events</caption>
+            <thead><tr><th scope="col">Event Name</th><th scope="col">Date</th><th scope="col">Time</th><th scope="col">Location</th><th scope="col">Action</th></tr></thead>
+            <tbody>
+              <tr><td>Web Development Workshop</td><td>15 September 2026</td><td>10:00 AM</td><td>Computer Laboratory</td><td><a href="#">View</a> | <a href="#">Edit</a> | <a href="#">Delete</a></td></tr>
+              <tr><td>Technical Quiz Competition</td><td>20 September 2026</td><td>2:00 PM</td><td>Seminar Hall</td><td><a href="#">View</a> | <a href="#">Edit</a> | <a href="#">Delete</a></td></tr>
+              <tr><td>Annual Sports Event</td><td>25 September 2026</td><td>9:00 AM</td><td>College Sports Ground</td><td><a href="#">View</a> | <a href="#">Edit</a> | <a href="#">Delete</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>&copy; 2026 StudentHub. All rights reserved.</span>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

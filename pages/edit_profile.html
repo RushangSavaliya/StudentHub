@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Edit StudentHub student profile information.">
+<title>StudentHub | Edit Profile</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<div class="layout-dash">
+  <div class="dash-body">
+    <aside class="sidebar">
+      <div class="sidebar-brand"><img src="../img/logo.jpg" alt="StudentHub logo"><div><div class="title">StudentHub</div><div class="small">Portal</div></div></div>
+      <nav class="side-nav" aria-label="Student navigation">
+        <a href="student_dash.html">Dashboard</a>
+        <a href="profile.html">Profile</a>
+        <a aria-current="page" href="edit_profile.html">Edit Profile</a>
+        <a href="event.html">Events</a>
+        <a href="feedback.html">Feedback</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html">Logout</a>
+      </nav>
+    </aside>
+    <main class="dashboard-main" id="main-content">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="student_dash.html">Dashboard</a></li>
+          <li><a href="profile.html">Profile</a></li>
+          <li aria-current="page">Edit Profile</li>
+        </ol>
+      </nav>
+      <header class="dashboard-header"><h1>Edit Profile</h1><span>Student Name</span></header>
+      <section class="profile-panel">
+        <h2>Profile Information Form</h2>
+        <form action="#" method="post">
+          <fieldset>
+            <legend>Personal Information</legend>
+            <div class="form-group"><label for="full-name">Full Name</label><input type="text" id="full-name" name="full_name" value="Student Name" required></div>
+            <div class="form-group"><label for="email">Email Address</label><input type="email" id="email" name="email" value="student@example.com" required></div>
+            <div class="form-group"><label for="mobile">Mobile Number</label><input type="tel" id="mobile" name="mobile" value="9876543210" required></div>
+            <div class="form-group"><label for="gender">Gender</label><select id="gender" name="gender"><option value="male" selected>Male</option><option value="female">Female</option><option value="other">Other</option></select></div>
+          </fieldset>
+          <fieldset>
+            <legend>Academic Information</legend>
+            <div class="form-group"><label for="course">Course</label><select id="course" name="course" required><option value="information-technology" selected>Information Technology</option><option value="computer-engineering">Computer Engineering</option><option value="computer-science">Computer Science</option></select></div>
+            <div class="form-group"><label for="year">Academic Year</label><select id="year" name="year" required><option value="1">First Year</option><option value="2">Second Year</option><option value="3" selected>Third Year</option><option value="4">Fourth Year</option></select></div>
+          </fieldset>
+          <div class="form-actions">
+            <input type="submit" value="Save Changes">
+            <input type="reset" value="Reset">
+            <a class="btn btn-soft" href="profile.html">Cancel</a>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>&copy; 2026 StudentHub. All rights reserved.</span>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

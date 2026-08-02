@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="StudentHub student dashboard for accessing student services and information.">
+<title>StudentHub | Student Dashboard</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<div class="layout-dash">
+  <div class="dash-body">
+    <aside class="sidebar">
+      <div class="sidebar-brand"><img src="../img/logo.jpg" alt="StudentHub logo"><div><div class="title">StudentHub</div><div class="small">Portal</div></div></div>
+
+      <nav class="side-nav" aria-label="Student navigation">
+        <a aria-current="page" href="student_dash.html">Dashboard</a>
+        <a href="profile.html">Profile</a>
+        <a href="event.html">Events</a>
+        <a href="feedback.html">Feedback</a>
+        <a href="contact.html">Contact</a>
+        <a href="faq.html">FAQ</a>
+        <a href="login.html">Logout</a>
+      </nav>
+
+    </aside>
+    <main class="dashboard-main" id="main-content">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="../index.html">Home</a></li>
+          <li aria-current="page">Student Dashboard</li>
+        </ol>
+      </nav>
+      <header class="dashboard-header"><h1>Student Dashboard</h1><span>Student Name</span></header>
+      <div class="section-title"><h2>Welcome, Student</h2><p>Quick access to your portal features.</p></div>
+      <div class="stats three">
+        <div class="stat"><h3>Profile</h3><p>View your profile</p><a class="btn btn-soft" href="profile.html">View</a></div>
+        <div class="stat"><h3>Upcoming Events</h3><p>5 Events</p><a class="btn btn-soft" href="event.html">View</a></div>
+        <div class="stat"><h3>Feedback</h3><p>Share your feedback</p><a class="btn btn-soft" href="feedback.html">Give Feedback</a></div>
+      </div>
+      <div class="section-title"><h2>Upcoming Events</h2></div>
+      <div class="grid-2">
+        <article class="card"><div class="placeholder">Event Image</div><h3>Web Development Workshop</h3><p>Date &amp; event details</p><a class="link-btn" href="event.html">View Event</a></article>
+        <article class="card"><div class="placeholder">Event Image</div><h3>Technical Quiz Competition</h3><p>Date &amp; event details</p><a class="link-btn" href="event.html">View Event</a></article>
+      </div>
+    </main>
+  </div>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>&copy; 2026 StudentHub. All rights reserved.</span>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

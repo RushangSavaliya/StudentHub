@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="StudentHub student management page for administrators.">
+<title>StudentHub | Manage Students</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<div class="layout-dash">
+  <div class="dash-body">
+    <aside class="sidebar">
+      <div class="sidebar-brand"><img src="../img/logo.jpg" alt="StudentHub logo"><div><div class="title">StudentHub</div><div class="small">Admin Portal</div></div></div>
+      <nav class="side-nav" aria-label="Administrator navigation">
+        <a href="admin_dash.html">Dashboard</a>
+        <a href="admin_profile.html">Admin Profile</a>
+        <a aria-current="page" href="manage_student.html">Manage Students</a>
+        <a href="manage_events.html">Manage Events</a>
+        <a href="login.html">Logout</a>
+      </nav>
+    </aside>
+    <main class="dashboard-main" id="main-content">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="admin_dash.html">Dashboard</a></li>
+          <li aria-current="page">Manage Students</li>
+        </ol>
+      </nav>
+      <header class="dashboard-header"><h1>Manage Students</h1><span>Student Records</span></header>
+      <section class="card">
+        <h2>Search Students</h2>
+        <form action="#" method="get">
+          <div class="form-group"><label for="student-search">Search by Name or Email</label><input type="search" id="student-search" name="search" placeholder="Enter student name or email"></div>
+          <div class="form-group"><label for="course-filter">Filter by Course</label><select id="course-filter" name="course"><option value="">All Courses</option><option value="information-technology">Information Technology</option><option value="computer-engineering">Computer Engineering</option><option value="computer-science">Computer Science</option></select></div>
+          <div class="form-actions"><input type="submit" value="Search"></div>
+        </form>
+      </section>
+      <section style="margin-top:16px">
+        <h2>Student Records</h2>
+        <div class="table-wrap">
+          <table>
+            <caption>Registered Student Information</caption>
+            <thead><tr><th scope="col">Student ID</th><th scope="col">Name</th><th scope="col">Email</th><th scope="col">Course</th><th scope="col">Year</th><th scope="col">Action</th></tr></thead>
+            <tbody>
+              <tr><td>STU2026001</td><td>Yash Patel</td><td>yash@example.com</td><td>Information Technology</td><td>3</td><td><a href="#">View</a> | <a href="#">Edit</a> | <a href="#">Delete</a></td></tr>
+              <tr><td>STU2026002</td><td>Rahul Shah</td><td>rahul@example.com</td><td>Computer Engineering</td><td>3</td><td><a href="#">View</a> | <a href="#">Edit</a> | <a href="#">Delete</a></td></tr>
+              <tr><td>STU2026003</td><td>Priya Patel</td><td>priya@example.com</td><td>Computer Science</td><td>2</td><td><a href="#">View</a> | <a href="#">Edit</a> | <a href="#">Delete</a></td></tr>
+              <tr><td>STU2026004</td><td>Arjun Mehta</td><td>arjun@example.com</td><td>Information Technology</td><td>3</td><td><a href="#">View</a> | <a href="#">Edit</a> | <a href="#">Delete</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>&copy; 2026 StudentHub. All rights reserved.</span>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

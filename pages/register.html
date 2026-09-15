@@ -1,93 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Create a new StudentHub student account.">
-<title>StudentHub | Register</title>
-<link rel="stylesheet" href="../css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Create a new StudentHub student account." />
+  <title>StudentHub | Register</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <script src="../js/script.js" defer></script>
 </head>
-<body>
-<a class="skip-link" href="#main-content">Skip to main content</a>
-<header class="site-header">
-  <div class="header-inner">
-    <div class="brand">
-      <img src="../img/logo.jpg" alt="StudentHub logo">
-      <div class="brand-text">
-        <div class="title">StudentHub</div>
-        <div class="tagline">Student Management and Information Portal</div>
+<body class="d-flex flex-column min-vh-100">
+
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html">
+        <img src="../img/logo.jpg" alt="StudentHub logo" />
+        <div class="brand-text">
+          <strong>StudentHub</strong>
+          <small>Student Management Portal</small>
+        </div>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto me-3 gap-1">
+          <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="event.html">Events</a></li>
+          <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="feedback.html">Feedback</a></li>
+        </ul>
+        <div class="d-flex align-items-center gap-2">
+          <a class="btn btn-outline-sh btn-sm" href="login.html">Login</a>
+          <a class="btn btn-sh-primary btn-sm" href="register.html">Register</a>
+
+        </div>
       </div>
     </div>
-    <nav class="main-nav" aria-label="Main navigation">
-      <a href="../index.html">Home</a>
-      <a href="../pages/about.html">About</a>
-      <a href="../pages/event.html">Events</a>
-      <a href="../pages/faq.html">FAQ</a>
-      <a href="../pages/contact.html">Contact</a>
-      <a href="../pages/feedback.html">Feedback</a>
-      <a href="../pages/login.html">Login</a>
-      <a href="../pages/register.html" aria-current="page">Register</a>
+  </nav>
+
+  <main class="container flex-grow-1">
+    <nav aria-label="Breadcrumb" class="mb-3">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Register</li>
+      </ol>
     </nav>
-    <div class="actions"><a class="btn btn-soft" href="../pages/login.html">Login</a></div>
-  </div>
-</header>
-<nav class="breadcrumb" aria-label="Breadcrumb">
-  <ol>
-    <li><a href="../index.html">Home</a></li>
-    <li aria-current="page">Register</li>
-  </ol>
-</nav>
-<main id="main-content" class="page-section">
-  <div class="container">
-    <div class="section-title">
-      <h1>Student Registration</h1>
-      <p>Create a StudentHub account by filling out the registration form below.</p>
-    </div>
-    <div class="card">
-      <form action="#" method="post">
-        <fieldset>
-          <legend>Personal Information</legend>
-          <div class="form-group"><label for="full-name">Full Name</label><input type="text" id="full-name" name="full_name" autocomplete="name" required></div>
-          <div class="form-group"><label for="email">Email Address</label><input type="email" id="email" name="email" autocomplete="email" required></div>
-          <div class="form-group"><label for="mobile">Mobile Number</label><input type="tel" id="mobile" name="mobile" autocomplete="tel" required></div>
-          <div class="form-group"><label for="course">Course</label><select id="course" name="course" required><option value="">Select your course</option><option value="computer-engineering">Computer Engineering</option><option value="information-technology">Information Technology</option><option value="computer-science">Computer Science</option></select></div>
-          <div class="form-group"><label for="year">Academic Year</label><select id="year" name="year" required><option value="">Select year</option><option value="1">First Year</option><option value="2">Second Year</option><option value="3">Third Year</option><option value="4">Fourth Year</option></select></div>
-        </fieldset>
-        <fieldset>
-          <legend>Gender</legend>
-          <div class="radio-group">
-            <label><input type="radio" name="gender" value="male"> Male</label>
-            <label><input type="radio" name="gender" value="female"> Female</label>
-            <label><input type="radio" name="gender" value="other"> Other</label>
-          </div>
-        </fieldset>
-        <fieldset>
-          <legend>Account Information</legend>
-          <div class="form-group"><label for="password">Password</label><input type="password" id="password" name="password" autocomplete="new-password" required></div>
-          <div class="form-group"><label for="confirm-password">Confirm Password</label><input type="password" id="confirm-password" name="confirm_password" autocomplete="new-password" required></div>
-        </fieldset>
-        <fieldset>
-          <legend>Terms and Conditions</legend>
-          <div class="checkbox-group"><label><input type="checkbox" name="terms" required> I agree to the terms and conditions.</label></div>
-        </fieldset>
-        <div class="form-actions">
-          <input type="submit" value="Register">
-          <input type="reset" value="Clear">
+
+    <section class="mb-4">
+      <div class="section-title mb-3">
+        <h4 class="fw-bold">Student Registration</h4>
+        <p>Create a StudentHub account by filling out the registration form below.</p>
+      </div>
+      <div class="card mb-4">
+        <div class="card-body">
+          <form action="#" method="post">
+            <fieldset class="mb-3 p-3 rounded-3">
+              <legend class="fs-6 fw-bold">Personal Information</legend>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="full-name" class="form-label">Full Name</label>
+                  <input type="text" class="form-control" id="full-name" name="full_name" autocomplete="name" required />
+                </div>
+                <div class="col-md-6">
+                  <label for="email" class="form-label">Email Address</label>
+                  <input type="email" class="form-control" id="email" name="email" autocomplete="email" required />
+                </div>
+                <div class="col-md-6">
+                  <label for="mobile" class="form-label">Mobile Number</label>
+                  <input type="tel" class="form-control" id="mobile" name="mobile" autocomplete="tel" required />
+                </div>
+                <div class="col-md-6">
+                  <label for="course" class="form-label">Course</label>
+                  <select class="form-select" id="course" name="course" required>
+                    <option value="">Select your course</option>
+                    <option value="computer-engineering">Computer Engineering</option>
+                    <option value="information-technology">Information Technology</option>
+                    <option value="computer-science">Computer Science</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label for="year" class="form-label">Academic Year</label>
+                  <select class="form-select" id="year" name="year" required>
+                    <option value="">Select year</option>
+                    <option value="1">First Year</option>
+                    <option value="2">Second Year</option>
+                    <option value="3">Third Year</option>
+                    <option value="4">Fourth Year</option>
+                  </select>
+                </div>
+              </div>
+            </fieldset>
+            <fieldset class="mb-3 p-3 rounded-3">
+              <legend class="fs-6 fw-bold">Gender</legend>
+              <div class="d-flex flex-wrap gap-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gender" value="male" id="gender-male" />
+                  <label class="form-check-label" for="gender-male">Male</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gender" value="female" id="gender-female" />
+                  <label class="form-check-label" for="gender-female">Female</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gender" value="other" id="gender-other" />
+                  <label class="form-check-label" for="gender-other">Other</label>
+                </div>
+              </div>
+            </fieldset>
+            <fieldset class="mb-3 p-3 rounded-3">
+              <legend class="fs-6 fw-bold">Account Information</legend>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="password" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="password" name="password" autocomplete="new-password" required />
+                </div>
+                <div class="col-md-6">
+                  <label for="confirm-password" class="form-label">Confirm Password</label>
+                  <input type="password" class="form-control" id="confirm-password" name="confirm_password" autocomplete="new-password" required />
+                </div>
+              </div>
+            </fieldset>
+            <fieldset class="mb-3 p-3 rounded-3">
+              <legend class="fs-6 fw-bold">Terms and Conditions</legend>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="terms" name="terms" required />
+                <label class="form-check-label" for="terms">I agree to the terms and conditions.</label>
+              </div>
+            </fieldset>
+            <div class="d-flex gap-2">
+              <input class="btn btn-sh-primary" type="submit" value="Register" />
+              <input class="btn btn-outline-sh" type="reset" value="Clear" />
+            </div>
+          </form>
         </div>
-      </form>
+      </div>
+      <div class="note-callout">
+        <h5 class="fw-bold">Already Registered?</h5>
+        <p>If you already have a StudentHub account, you can login here.</p>
+        <a class="btn btn-sh-soft btn-sm" href="login.html">Go to Login</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer py-3 mt-auto">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+      <span class="text-secondary small">&copy; 2026 StudentHub. All rights reserved.</span>
+      <nav class="d-flex gap-3 small">
+        <a href="contact.html">Contact</a>
+        <a href="faq.html">FAQ</a>
+        <a href="feedback.html">Feedback</a>
+      </nav>
     </div>
-    <div style="margin-top:16px" class="note">
-      <h2>Already Registered?</h2>
-      <p>If you already have a StudentHub account, you can login here.</p>
-      <a class="btn btn-soft" href="login.html">Go to Login</a>
-    </div>
-  </div>
-</main>
-<footer class="site-footer">
-  <div class="footer-inner">
-    <span>&copy; 2026 StudentHub. All rights reserved.</span>
-    <div class="footer-links"><a href="../pages/contact.html">Contact</a><a href="../pages/faq.html">FAQ</a></div>
-  </div>
-</footer>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

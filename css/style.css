@@ -141,6 +141,24 @@ fieldset {
 }
 legend { font-weight: 600; font-size: 0.95rem; color: var(--sh-text); }
 
+/* ===== Practical 5 Registration Validation ===== */
+.field-error {
+  min-height: 1.25rem;
+  margin-top: 0.25rem;
+  color: #b42318;
+  font-size: 0.875rem;
+}
+.form-control.is-valid, .form-select.is-valid { border-color: #198754; }
+.form-control.is-invalid, .form-select.is-invalid, .form-check-input.is-invalid { border-color: #b42318; }
+.form-control:focus.is-invalid, .form-select:focus.is-invalid, .form-check-input:focus.is-invalid { box-shadow: 0 0 0 0.25rem rgba(180, 35, 24, 0.2); }
+.password-strength { display: flex; gap: 0.25rem; margin-top: 0.6rem; }
+.password-strength span { height: 0.35rem; flex: 1; border-radius: 99px; background: var(--sh-border); }
+.password-strength[data-strength="1"] span:nth-child(1) { background: #dc3545; }
+.password-strength[data-strength="2"] span:nth-child(-n+2) { background: #fd7e14; }
+.password-strength[data-strength="3"] span:nth-child(-n+3) { background: #ffc107; }
+.password-strength[data-strength="4"] span { background: #198754; }
+:root[data-theme="dark"] .field-error { color: #ff9b93; }
+
 /* ===== Tables ===== */
 .table thead th {
   background: var(--sh-accent) !important;

@@ -56,46 +56,53 @@
       </div>
       <div class="card mb-4">
         <div class="card-body">
-          <form action="#" method="post">
+          <!-- Practical 5: JavaScript provides accessible, field-level validation on submission. -->
+          <form id="registration-form" action="#" method="post" novalidate>
             <fieldset class="mb-3 p-3 rounded-3">
               <legend class="fs-6 fw-bold">Personal Information</legend>
               <div class="row g-3">
                 <div class="col-md-6">
                   <label for="full-name" class="form-label">Full Name</label>
-                  <input type="text" class="form-control" id="full-name" name="full_name" autocomplete="name" required />
+                  <input type="text" class="form-control" id="full-name" name="full_name" autocomplete="name" required minlength="2" pattern="[A-Za-z]+(?:[ '-][A-Za-z]+)*" aria-describedby="full-name-error" />
+                  <div id="full-name-error" class="field-error" role="alert"></div>
                 </div>
                 <div class="col-md-6">
                   <label for="email" class="form-label">Email Address</label>
-                  <input type="email" class="form-control" id="email" name="email" autocomplete="email" required />
+                  <input type="email" class="form-control" id="email" name="email" autocomplete="email" required aria-describedby="email-error" />
+                  <div id="email-error" class="field-error" role="alert"></div>
                 </div>
                 <div class="col-md-6">
                   <label for="mobile" class="form-label">Mobile Number</label>
-                  <input type="tel" class="form-control" id="mobile" name="mobile" autocomplete="tel" required />
+                  <input type="tel" class="form-control" id="mobile" name="mobile" autocomplete="tel" inputmode="numeric" required pattern="[6-9][0-9]{9}" maxlength="10" aria-describedby="mobile-hint mobile-error" />
+                  <div id="mobile-hint" class="form-text">Enter a 10-digit Indian mobile number.</div>
+                  <div id="mobile-error" class="field-error" role="alert"></div>
                 </div>
                 <div class="col-md-6">
                   <label for="course" class="form-label">Course</label>
-                  <select class="form-select" id="course" name="course" required>
+                  <select class="form-select" id="course" name="course" required aria-describedby="course-error">
                     <option value="">Select your course</option>
                     <option value="computer-engineering">Computer Engineering</option>
                     <option value="information-technology">Information Technology</option>
                     <option value="computer-science">Computer Science</option>
                   </select>
+                  <div id="course-error" class="field-error" role="alert"></div>
                 </div>
                 <div class="col-md-6">
                   <label for="year" class="form-label">Academic Year</label>
-                  <select class="form-select" id="year" name="year" required>
+                  <select class="form-select" id="year" name="year" required aria-describedby="year-error">
                     <option value="">Select year</option>
                     <option value="1">First Year</option>
                     <option value="2">Second Year</option>
                     <option value="3">Third Year</option>
                     <option value="4">Fourth Year</option>
                   </select>
+                  <div id="year-error" class="field-error" role="alert"></div>
                 </div>
               </div>
             </fieldset>
             <fieldset class="mb-3 p-3 rounded-3">
               <legend class="fs-6 fw-bold">Gender</legend>
-              <div class="d-flex flex-wrap gap-3">
+              <div class="d-flex flex-wrap gap-3" role="radiogroup" aria-describedby="gender-error">
                 <div class="form-check">
                   <input class="form-check-input" type="radio" name="gender" value="male" id="gender-male" />
                   <label class="form-check-label" for="gender-male">Male</label>
@@ -109,26 +116,35 @@
                   <label class="form-check-label" for="gender-other">Other</label>
                 </div>
               </div>
+              <div id="gender-error" class="field-error" role="alert"></div>
             </fieldset>
             <fieldset class="mb-3 p-3 rounded-3">
               <legend class="fs-6 fw-bold">Account Information</legend>
               <div class="row g-3">
                 <div class="col-md-6">
                   <label for="password" class="form-label">Password</label>
-                  <input type="password" class="form-control" id="password" name="password" autocomplete="new-password" required />
+                  <input type="password" class="form-control" id="password" name="password" autocomplete="new-password" required minlength="8" aria-describedby="password-hint password-strength-text password-error" />
+                  <div id="password-hint" class="form-text">Use 8+ characters with upper- and lowercase letters, a number, and a special character.</div>
+                  <div class="password-strength" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span>
+                  </div>
+                  <p id="password-strength-text" class="form-text mb-0" aria-live="polite">Password strength: not entered</p>
+                  <div id="password-error" class="field-error" role="alert"></div>
                 </div>
                 <div class="col-md-6">
                   <label for="confirm-password" class="form-label">Confirm Password</label>
-                  <input type="password" class="form-control" id="confirm-password" name="confirm_password" autocomplete="new-password" required />
+                  <input type="password" class="form-control" id="confirm-password" name="confirm_password" autocomplete="new-password" required aria-describedby="confirm-password-error" />
+                  <div id="confirm-password-error" class="field-error" role="alert"></div>
                 </div>
               </div>
             </fieldset>
             <fieldset class="mb-3 p-3 rounded-3">
               <legend class="fs-6 fw-bold">Terms and Conditions</legend>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="terms" name="terms" required />
+                <input class="form-check-input" type="checkbox" id="terms" name="terms" required aria-describedby="terms-error" />
                 <label class="form-check-label" for="terms">I agree to the terms and conditions.</label>
               </div>
+              <div id="terms-error" class="field-error" role="alert"></div>
             </fieldset>
             <div class="d-flex gap-2">
               <input class="btn btn-sh-primary" type="submit" value="Register" />

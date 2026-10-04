@@ -1,4 +1,4 @@
-/* StudentHub - Practical 4: DOM manipulation and UI interactivity */
+/* StudentHub - Practical 4 interactivity and Practical 5 form validation */
 (function () {
   "use strict";
 
@@ -196,6 +196,116 @@
     }
   }
 
+  function initialiseRegistrationValidation() {
+    var form = document.getElementById("registration-form");
+    if (!form) return;
+
+    var fields = {
+      fullName: document.getElementById("full-name"),
+      email: document.getElementById("email"),
+      mobile: document.getElementById("mobile"),
+      course: document.getElementById("course"),
+      year: document.getElementById("year"),
+      password: document.getElementById("password"),
+      confirmPassword: document.getElementById("confirm-password"),
+      terms: document.getElementById("terms")
+    };
+    var genderFields = Array.from(form.querySelectorAll('input[name="gender"]'));
+    var namePattern = /^[A-Za-z]+(?:[ '-][A-Za-z]+)*$/;
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    var mobilePattern = /^[6-9]\d{9}$/;
+
+    function errorElement(key) { return document.getElementById(key + "-error"); }
+
+    function setFieldState(field, key, message) {
+      var error = errorElement(key);
+      if (error) error.textContent = message || "";
+      if (!field) return !message;
+      field.classList.toggle("is-invalid", Boolean(message));
+      field.classList.toggle("is-valid", !message && field.value !== "");
+      field.setAttribute("aria-invalid", String(Boolean(message)));
+      return !message;
+    }
+
+    function passwordScore(value) {
+      var score = 0;
+      if (value.length >= 8) score++;
+      if (/[a-z]/.test(value) && /[A-Z]/.test(value)) score++;
+      if (/\d/.test(value)) score++;
+      if (/[^A-Za-z0-9]/.test(value)) score++;
+      return score;
+    }
+
+    function updateStrength() {
+      var score = passwordScore(fields.password.value);
+      var labels = ["not entered", "weak", "fair", "good", "strong"];
+      var meter = form.querySelector(".password-strength");
+      meter.dataset.strength = String(score);
+      document.getElementById("password-strength-text").textContent = "Password strength: " + labels[score];
+      return score;
+    }
+
+    function validate(key) {
+      var value;
+      switch (key) {
+        case "full-name":
+          value = fields.fullName.value.trim();
+          return setFieldState(fields.fullName, key, !value ? "Enter your full name." : !namePattern.test(value) ? "Use letters, spaces, apostrophes, or hyphens only." : "");
+        case "email":
+          value = fields.email.value.trim();
+          return setFieldState(fields.email, key, !value ? "Enter your email address." : !emailPattern.test(value) ? "Enter a valid email address, for example name@example.com." : "");
+        case "mobile":
+          value = fields.mobile.value.trim();
+          return setFieldState(fields.mobile, key, !value ? "Enter your mobile number." : !mobilePattern.test(value) ? "Enter a valid 10-digit Indian mobile number starting with 6, 7, 8, or 9." : "");
+        case "course":
+          return setFieldState(fields.course, key, !fields.course.value ? "Select your course." : "");
+        case "year":
+          return setFieldState(fields.year, key, !fields.year.value ? "Select your academic year." : "");
+        case "gender":
+          var selectedGender = genderFields.some(function (field) { return field.checked; });
+          var genderError = errorElement(key);
+          if (genderError) genderError.textContent = selectedGender ? "" : "Select your gender.";
+          genderFields.forEach(function (field) { field.setAttribute("aria-invalid", String(!selectedGender)); });
+          return selectedGender;
+        case "password":
+          value = fields.password.value;
+          var score = updateStrength();
+          var message = !value ? "Create a password." : value.length < 8 ? "Use at least 8 characters." : score < 4 ? "Add uppercase, lowercase, number, and special character to make the password strong." : "";
+          var isValid = setFieldState(fields.password, key, message);
+          if (fields.confirmPassword.value) validate("confirm-password");
+          return isValid;
+        case "confirm-password":
+          return setFieldState(fields.confirmPassword, key, !fields.confirmPassword.value ? "Confirm your password." : fields.confirmPassword.value !== fields.password.value ? "Passwords do not match." : "");
+        case "terms":
+          var termsError = errorElement(key);
+          var termsMessage = fields.terms.checked ? "" : "You must accept the terms and conditions to register.";
+          if (termsError) termsError.textContent = termsMessage;
+          fields.terms.classList.toggle("is-invalid", Boolean(termsMessage));
+          fields.terms.setAttribute("aria-invalid", String(Boolean(termsMessage)));
+          return !termsMessage;
+      }
+      return true;
+    }
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      var isValid = ["full-name", "email", "mobile", "course", "year", "gender", "password", "confirm-password", "terms"].every(validate);
+      if (!isValid) {
+        var firstInvalid = form.querySelector(".is-invalid");
+        if (firstInvalid) firstInvalid.focus();
+      }
+    });
+
+    form.addEventListener("reset", function () {
+      window.setTimeout(function () {
+        form.querySelectorAll(".is-valid, .is-invalid").forEach(function (field) { field.classList.remove("is-valid", "is-invalid"); field.removeAttribute("aria-invalid"); });
+        form.querySelectorAll(".field-error").forEach(function (error) { error.textContent = ""; });
+        updateStrength();
+      });
+    });
+    updateStrength();
+  }
+
   initialiseNotification();
   initialiseTheme();
   initialiseHamburgerMenu();
@@ -203,4 +313,5 @@
   initialiseSlider();
   initialiseModal();
   initialiseDashboardSidebar();
+  initialiseRegistrationValidation();
 })();

@@ -1,0 +1,17 @@
+[
+  {"id":"STU2026001","name":"Yash Patel","email":"yash@example.com","course":"Information Technology","year":3},
+  {"id":"STU2026002","name":"Rahul Shah","email":"rahul@example.com","course":"Computer Engineering","year":3},
+  {"id":"STU2026003","name":"Priya Patel","email":"priya@example.com","course":"Computer Science","year":2},
+  {"id":"STU2026004","name":"Arjun Mehta","email":"arjun@example.com","course":"Information Technology","year":3},
+  {"id":"STU2026005","name":"Neha Joshi","email":"neha@example.com","course":"Computer Engineering","year":1},
+  {"id":"STU2026006","name":"Karan Desai","email":"karan@example.com","course":"Computer Science","year":4},
+  {"id":"STU2026007","name":"Isha Patel","email":"isha@example.com","course":"Information Technology","year":2},
+  {"id":"STU2026008","name":"Dev Shah","email":"dev@example.com","course":"Computer Engineering","year":4},
+  {"id":"STU2026009","name":"Riya Mehta","email":"riya@example.com","course":"Computer Science","year":1},
+  {"id":"STU2026010","name":"Mihir Dave","email":"mihir@example.com","course":"Information Technology","year":4},
+  {"id":"STU2026011","name":"Khushi Trivedi","email":"khushi@example.com","course":"Computer Engineering","year":2},
+  {"id":"STU2026012","name":"Aarav Patel","email":"aarav@example.com","course":"Computer Science","year":3},
+  {"id":"STU2026013","name":"Diya Shah","email":"diya@example.com","course":"Information Technology","year":1},
+  {"id":"STU2026014","name":"Parth Joshi","email":"parth@example.com","course":"Computer Engineering","year":3},
+  {"id":"STU2026015","name":"Anaya Desai","email":"anaya@example.com","course":"Computer Science","year":2}
+]

@@ -8,6 +8,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="../css/style.css" />
   <script src="../js/script.js" defer></script>
+  <script src="../js/data-rendering.js" defer></script>
 </head>
 <body class="d-flex flex-column min-vh-100">
 
@@ -54,23 +55,17 @@
         <h4 class="fw-bold">Frequently Asked Questions</h4>
         <p>Find answers to common questions about StudentHub.</p>
       </div>
-      <div class="faq-list mb-4">
-        <article class="faq-item">
-          <h5><button type="button" class="faq-question" data-faq-toggle aria-expanded="false" aria-controls="faq-answer-1">What is StudentHub?<span aria-hidden="true">+</span></button></h5>
-          <div class="faq-answer" id="faq-answer-1" hidden><p>StudentHub is a student management and information portal that provides access to student services, profiles, events, and other information.</p></div>
-        </article>
-        <article class="faq-item">
-          <h5><button type="button" class="faq-question" data-faq-toggle aria-expanded="false" aria-controls="faq-answer-2">How do I create an account?<span aria-hidden="true">+</span></button></h5>
-          <div class="faq-answer" id="faq-answer-2" hidden><p>Visit the registration page and complete the student registration form.</p><a href="register.html" class="link-btn">Go to Registration &rarr;</a></div>
-        </article>
-        <article class="faq-item">
-          <h5><button type="button" class="faq-question" data-faq-toggle aria-expanded="false" aria-controls="faq-answer-3">How do I login?<span aria-hidden="true">+</span></button></h5>
-          <div class="faq-answer" id="faq-answer-3" hidden><p>Use your registered email address and password on the StudentHub login page.</p><a href="login.html" class="link-btn">Go to Login &rarr;</a></div>
-        </article>
-        <article class="faq-item">
-          <h5><button type="button" class="faq-question" data-faq-toggle aria-expanded="false" aria-controls="faq-answer-4">How can I update my profile?<span aria-hidden="true">+</span></button></h5>
-          <div class="faq-answer" id="faq-answer-4" hidden><p>After logging in, open your profile and select the edit profile option.</p></div>
-        </article>
+      <div class="card mb-4" data-faqs-app data-source="../data/faqs.json">
+        <div class="card-body">
+          <div class="row g-3 align-items-end mb-4">
+            <div class="col-md-5"><label for="faq-search" class="form-label">Search Questions</label><input id="faq-search" class="form-control" type="search" placeholder="Search questions or answers" /></div>
+            <div class="col-md-3"><label for="faq-category" class="form-label">Filter by Category</label><select id="faq-category" class="form-select"><option value="">All Categories</option></select></div>
+            <div class="col-md-4"><label for="faq-sort" class="form-label">Sort Questions</label><select id="faq-sort" class="form-select"><option value="question-asc">Question: A to Z</option><option value="question-desc">Question: Z to A</option></select></div>
+          </div>
+          <p class="data-status" role="status" aria-live="polite">Loading frequently asked questions...</p>
+          <div class="faq-list" data-results></div>
+          <nav class="mt-4" aria-label="FAQ pagination"><div class="pagination-controls" data-pagination></div></nav>
+        </div>
       </div>
       <div class="note-callout">
         <h5 class="fw-bold">Need More Help?</h5>

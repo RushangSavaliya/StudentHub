@@ -1,0 +1,17 @@
+[
+  {"id":1,"category":"Account","question":"What is StudentHub?","answer":"StudentHub is a student management and information portal for profiles, events, and student services."},
+  {"id":2,"category":"Account","question":"How do I create an account?","answer":"Open the registration page and complete the student registration form."},
+  {"id":3,"category":"Account","question":"How do I log in?","answer":"Use your registered email address and password on the StudentHub login page."},
+  {"id":4,"category":"Profile","question":"How can I update my profile?","answer":"After logging in, open your profile and choose the edit profile option."},
+  {"id":5,"category":"Events","question":"Where can I find upcoming events?","answer":"The Events page lists workshops, competitions, sports, seminars, and cultural activities."},
+  {"id":6,"category":"Events","question":"How do I register for an event?","answer":"Log in to StudentHub and select the registration option for the event."},
+  {"id":7,"category":"Account","question":"What should I do if I forget my password?","answer":"Use the Forgot Password link on the login page to start the reset process."},
+  {"id":8,"category":"Profile","question":"Can I change my email address?","answer":"You can update your contact details from the edit profile page after logging in."},
+  {"id":9,"category":"Events","question":"Can an event date change?","answer":"Yes. Check the Events page regularly because the administration may update event details."},
+  {"id":10,"category":"Support","question":"How do I contact StudentHub support?","answer":"Use the Contact page to send a message to the StudentHub support team."},
+  {"id":11,"category":"Account","question":"Is my StudentHub account required?","answer":"An account is required to access personal profile features and event registration."},
+  {"id":12,"category":"Profile","question":"Why is my academic year important?","answer":"Your academic year helps StudentHub show information that is relevant to your study level."},
+  {"id":13,"category":"Events","question":"Who can attend college events?","answer":"Eligibility is shown in each event description; some events may be open to all students."},
+  {"id":14,"category":"Support","question":"Where can I report a technical issue?","answer":"Describe the issue on the Contact page so the support team can assist you."},
+  {"id":15,"category":"Support","question":"Where can I share feedback?","answer":"Use the Feedback page to share your experience and suggestions for StudentHub."}
+]

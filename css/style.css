@@ -159,6 +159,12 @@ legend { font-weight: 600; font-size: 0.95rem; color: var(--sh-text); }
 .password-strength[data-strength="4"] span { background: #198754; }
 :root[data-theme="dark"] .field-error { color: #ff9b93; }
 
+/* ===== Practical 6 Fetch API Views ===== */
+.data-status { color: var(--sh-muted); margin-bottom: 1rem; }
+.data-status.data-error { color: #b42318; font-weight: 600; }
+.pagination-controls { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.pagination-controls .active { background: var(--sh-accent); border-color: var(--sh-accent); color: #fff; }
+
 /* ===== Tables ===== */
 .table thead th {
   background: var(--sh-accent) !important;

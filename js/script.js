@@ -288,9 +288,9 @@
     }
 
     form.addEventListener("submit", function (event) {
-      event.preventDefault();
       var isValid = ["full-name", "email", "mobile", "course", "year", "gender", "password", "confirm-password", "terms"].every(validate);
       if (!isValid) {
+        event.preventDefault();
         var firstInvalid = form.querySelector(".is-invalid");
         if (firstInvalid) firstInvalid.focus();
       }

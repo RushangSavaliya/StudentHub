@@ -6,81 +6,112 @@
   <meta name="description" content="Upcoming events available on StudentHub." />
   <title>StudentHub | Events</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
   <link rel="stylesheet" href="../css/style.css" />
   <script src="../js/script.js" defer></script>
   <script src="../js/data-rendering.js" defer></script>
 </head>
 <body class="d-flex flex-column min-vh-100">
 
-  <nav class="navbar navbar-expand-lg sticky-top">
+  <nav class="navbar navbar-expand-lg sticky-top bg-body border-bottom">
     <div class="container">
-      <a class="navbar-brand" href="../index.html">
+      <a class="navbar-brand d-flex align-items-center gap-2 fw-bold text-body" href="../index.html">
         <img src="../img/logo.jpg" alt="StudentHub logo" />
-        <div class="brand-text">
-          <strong>StudentHub</strong>
-          <small>Student Management Portal</small>
+        <div>
+          <div class="lh-1 fs-5">StudentHub</div>
+          <small class="text-secondary fw-normal" style="font-size:0.75rem">Student Portal</small>
         </div>
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="mainNav">
         <ul class="navbar-nav ms-auto me-3 gap-1">
-          <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-          <li class="nav-item"><a class="nav-link active" href="event.html" aria-current="page">Events</a></li>
-          <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
-          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-          <li class="nav-item"><a class="nav-link" href="feedback.html">Feedback</a></li>
+          <li class="nav-item"><a class="nav-link fw-semibold" href="../index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link fw-semibold" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link active fw-semibold" aria-current="page" href="event.html">Events</a></li>
+          <li class="nav-item"><a class="nav-link fw-semibold" href="faq.html">FAQ</a></li>
+          <li class="nav-item"><a class="nav-link fw-semibold" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link fw-semibold" href="feedback.html">Feedback</a></li>
         </ul>
         <div class="d-flex align-items-center gap-2">
-          <a class="btn btn-outline-sh btn-sm" href="login.html">Login</a>
-          <a class="btn btn-sh-primary btn-sm" href="register.html">Register</a>
-
+          <a class="btn btn-outline-secondary btn-sm rounded-pill px-3" href="login.html">Login</a>
+          <a class="btn btn-primary btn-sm rounded-pill px-3" href="register.html">Register</a>
         </div>
       </div>
     </div>
   </nav>
 
-  <main class="container flex-grow-1">
-    <nav aria-label="Breadcrumb" class="mb-3">
+  <main class="container flex-grow-1 py-4">
+    <nav aria-label="breadcrumb" class="mb-3">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+        <li class="breadcrumb-item"><a href="../index.html" class="text-secondary text-decoration-none">Home</a></li>
         <li class="breadcrumb-item active" aria-current="page">Events</li>
       </ol>
     </nav>
 
     <section class="mb-4">
-      <div class="section-title mb-3">
-        <h4 class="fw-bold">College Events</h4>
-        <p>Explore upcoming events and activities available to StudentHub users.</p>
+      <div class="mb-4">
+        <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-1 rounded-pill mb-2">
+          <i class="bi bi-calendar-event-fill me-1"></i> Campus Life
+        </span>
+        <h2 class="fw-bold">Campus Events &amp; Workshops</h2>
+        <p class="text-secondary lead">Browse, search, and register for technical workshops, academic competitions, and college seminars.</p>
       </div>
-      <div class="card mb-4" data-events-app data-source="../data/events.json">
-        <div class="card-body">
+
+      <!-- Practical 6: Dynamic Data Rendering for Events -->
+      <div class="card mb-4 p-4 rounded-4 shadow-sm border bg-body" data-events-app data-source="../data/events.json">
+        <div class="card-body p-0">
           <div class="row g-3 align-items-end mb-4">
-            <div class="col-md-5"><label for="event-search" class="form-label">Search Events</label><input id="event-search" class="form-control" type="search" placeholder="Search by event or location" /></div>
-            <div class="col-md-3"><label for="event-category" class="form-label">Filter by Category</label><select id="event-category" class="form-select"><option value="">All Categories</option></select></div>
-            <div class="col-md-4"><label for="event-sort" class="form-label">Sort Events</label><select id="event-sort" class="form-select"><option value="date-asc">Date: earliest first</option><option value="date-desc">Date: latest first</option><option value="title-asc">Name: A to Z</option></select></div>
+            <div class="col-md-5">
+              <label for="event-search" class="form-label fw-semibold small"><i class="bi bi-search me-1"></i> Search Events</label>
+              <input id="event-search" class="form-control rounded-3" type="search" placeholder="Search by title, location, or keyword..." />
+            </div>
+            <div class="col-md-3">
+              <label for="event-category" class="form-label fw-semibold small"><i class="bi bi-funnel me-1"></i> Category</label>
+              <select id="event-category" class="form-select rounded-3">
+                <option value="">All Categories</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label for="event-sort" class="form-label fw-semibold small"><i class="bi bi-sort-down me-1"></i> Sort By</label>
+              <select id="event-sort" class="form-select rounded-3">
+                <option value="date-asc">Date: Earliest first</option>
+                <option value="date-desc">Date: Latest first</option>
+                <option value="title-asc">Name: A to Z</option>
+              </select>
+            </div>
           </div>
-          <p class="data-status" role="status" aria-live="polite">Loading events...</p>
-          <div class="grid-cards grid-cards-3" data-results></div>
-          <nav class="mt-4" aria-label="Event pagination"><div class="pagination-controls" data-pagination></div></nav>
+
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <p class="data-status mb-0 text-secondary small fw-medium" role="status" aria-live="polite">Loading events...</p>
+          </div>
+
+          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" data-results></div>
+
+          <nav class="mt-4" aria-label="Event pagination">
+            <div class="pagination-controls" data-pagination></div>
+          </nav>
         </div>
       </div>
-      <div class="note-callout">
-        <h5 class="fw-bold">Event Information</h5>
-        <p class="mb-0">Event details may be updated by the administration. Check this page regularly for the latest information.</p>
+
+      <div class="alert alert-info d-flex align-items-center gap-3 p-4 rounded-4 shadow-sm border mb-0" role="status">
+        <i class="bi bi-info-circle-fill fs-3 text-info"></i>
+        <div>
+          <h5 class="fw-bold mb-1">Registration Information</h5>
+          <p class="mb-0 text-secondary small">Seats for technical laboratory workshops are limited. Please make sure to register early using your student login credentials.</p>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer py-3 mt-auto">
+  <footer class="border-top py-3 mt-auto bg-body">
     <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
       <span class="text-secondary small">&copy; 2026 StudentHub. All rights reserved.</span>
       <nav class="d-flex gap-3 small">
-        <a href="contact.html">Contact</a>
-        <a href="faq.html">FAQ</a>
-        <a href="feedback.html">Feedback</a>
+        <a href="contact.html" class="text-secondary text-decoration-none">Contact</a>
+        <a href="faq.html" class="text-secondary text-decoration-none">FAQ</a>
+        <a href="feedback.html" class="text-secondary text-decoration-none">Feedback</a>
       </nav>
     </div>
   </footer>

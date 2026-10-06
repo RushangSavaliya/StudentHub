@@ -1,2 +1,7 @@
 Name,Email,Mobile,"Password Hash",Course,Year,Gender
 Rushang,d26it125@charusat.edu.in,9876543211,$2y$12$Puf/RnYabl/hzIWSfEQOHO97F6K01YWfYqhH7QZ3nQdFVMQybJ4Ma,information-technology,2,male
+Rushang,d26it125@charusat.edu.in,9876543211,$2y$12$E1MXMoI4zE/DTGf30OFW7O9S5WlY.b774VtF82Z6NRZwTJigXUKZS,information-technology,2,male
+"Test User",test@example.com,9876543210,$2y$12$Tzox0UCrYcz13p6Bi8atoe9D8SUUUecHCQYQvBAhDYCjs7HdYi9ze,computer-engineering,2,male
+"Aarav Kumar",aarav@example.com,9876543210,$2y$12$Qwi3vk.20gtN2daEwjajseDVbrZYTBwT4VWuufmSIUM1eUHdqeeOy,computer-engineering,2,male
+"Karan Mehta",karan@example.com,9876543210,$2y$12$MEp/RcjDF86gahoJPL8fV./lywyhzTrPKkim4guIvRqzPGKAeIAHy,computer-engineering,3,male
+"Pooja Sharma",pooja@example.com,9876543210,$2y$12$FvX4dOGEE0N5G2vf3X55MuwZx7XalI7nYXBym6ZFP9WZ37Fd8pgqG,information-technology,2,female

@@ -6,68 +6,75 @@
 <meta name="description" content="StudentHub student management page for administrators." />
 <title>StudentHub | Manage Students</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 <link rel="stylesheet" href="../css/style.css" />
 <script src="../js/script.js" defer></script>
 <script src="../js/data-rendering.js" defer></script>
 </head>
-<body>
+<body class="bg-body">
 <a class="skip-link" href="#main">Skip to main content</a>
-<div class="d-flex">
-  <div class="sidebar-overlay"></div>
 
-  <aside class="dashboard-sidebar flex-column">
-    <a class="sidebar-brand mb-3" href="admin_dash.html">
-      <img src="../img/logo.jpg" alt="StudentHub logo" />
-      <div>
-        <strong>StudentHub</strong>
-        <small>Admin Portal</small>
-      </div>
-    </a>
-    <nav class="sidebar-nav flex-column gap-1">
-      <a href="admin_dash.html" class="nav-link">Dashboard</a>
-      <a href="admin_profile.html" class="nav-link">Admin Profile</a>
-      <a href="manage_student.html" class="nav-link active" aria-current="page">Manage Students</a>
-      <a href="manage_events.html" class="nav-link">Manage Events</a>
-      <a href="login.html" class="nav-link">Logout</a>
+<div class="d-flex min-vh-100">
+  <!-- Native Bootstrap Responsive Offcanvas Sidebar -->
+  <div class="offcanvas-lg offcanvas-start bg-body-tertiary border-end dashboard-sidebar-container p-3 flex-column" tabindex="-1" id="dashboardSidebar" style="width:260px;">
+    <div class="d-flex align-items-center justify-content-between mb-4 pb-2 border-bottom">
+      <a class="d-flex align-items-center gap-2 text-body text-decoration-none fw-bold" href="admin_dash.html">
+        <img class="rounded-3 border shadow-sm" src="../img/logo.jpg" alt="StudentHub logo" style="width:36px;height:36px;object-fit:cover;" />
+        <div>
+          <div class="lh-1 fs-5">StudentHub</div>
+          <small class="text-secondary fw-normal" style="font-size:0.75rem">Admin Portal</small>
+        </div>
+      </a>
+      <button type="button" class="btn-close d-lg-none" data-bs-dismiss="offcanvas" data-bs-target="#dashboardSidebar" aria-label="Close"></button>
+    </div>
+
+    <nav class="dashboard-sidebar-nav nav flex-column gap-1 flex-grow-1">
+      <a href="admin_dash.html" class="nav-link"><i class="bi bi-speedometer2"></i> Dashboard</a>
+      <a href="admin_profile.html" class="nav-link"><i class="bi bi-shield-person"></i> Admin Profile</a>
+      <a href="manage_student.html" class="nav-link active" aria-current="page"><i class="bi bi-people"></i> Manage Students</a>
+      <a href="manage_events.html" class="nav-link"><i class="bi bi-calendar3"></i> Manage Events</a>
+      <a href="login.html" class="nav-link text-danger mt-3"><i class="bi bi-box-arrow-right"></i> Sign Out</a>
     </nav>
-  </aside>
+  </div>
 
-  <div class="flex-grow-1 d-flex flex-column min-vh-100">
-    <nav class="navbar d-lg-none dashboard-mobile-nav">
-      <div class="container-fluid">
-        <button class="sidebar-toggle-btn btn p-1" aria-label="Toggle sidebar">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-        </button>
-        <a class="navbar-brand mb-0 fw-bold" href="admin_dash.html">StudentHub</a>
-      </div>
+  <!-- Main Content Area -->
+  <div class="flex-grow-1 d-flex flex-column min-vh-100 overflow-hidden">
+    <!-- Top Bar for Mobile -->
+    <nav class="navbar d-lg-none bg-body border-bottom px-3 py-2">
+      <button class="btn btn-outline-secondary btn-sm rounded-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#dashboardSidebar" aria-controls="dashboardSidebar" aria-label="Open Sidebar">
+        <i class="bi bi-list fs-5"></i>
+      </button>
+      <span class="fw-bold">StudentHub Admin</span>
     </nav>
 
-    <main id="main" class="dashboard-content flex-grow-1">
+    <main id="main" class="p-3 p-lg-4 flex-grow-1">
       <nav aria-label="breadcrumb" class="mb-3">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Home</a></li>
-          <li class="breadcrumb-item"><a href="admin_dash.html" class="nav-link">Dashboard</a></li>
+          <li class="breadcrumb-item"><a href="../index.html" class="text-secondary text-decoration-none">Home</a></li>
+          <li class="breadcrumb-item"><a href="admin_dash.html" class="text-secondary text-decoration-none">Dashboard</a></li>
           <li class="breadcrumb-item active" aria-current="page">Manage Students</li>
         </ol>
       </nav>
 
-      <header class="d-flex flex-wrap justify-content-between align-items-center mb-4">
-        <h1 class="h3 fw-bold mb-0">Manage Students</h1>
-        <span class="text-secondary">Student Records</span>
+      <header class="d-flex flex-wrap justify-content-between align-items-center mb-4 pb-3 border-bottom gap-2">
+        <div>
+          <h1 class="h3 fw-bold mb-1">Manage Student Records</h1>
+          <p class="text-secondary mb-0">Search, filter by enrolled course, and inspect registered student details.</p>
+        </div>
       </header>
 
-      <div class="card mb-4" data-students-app data-source="../data/students.json">
-        <div class="card-body">
-          <h5 class="card-title fw-bold">Search Students</h5>
+      <!-- Practical 6: Dynamic Data Rendering for Student Records -->
+      <div class="card mb-4 p-4 rounded-4 shadow-sm border bg-body" data-students-app data-source="../data/students.json">
+        <div class="card-body p-0">
           <form data-student-filters>
-            <div class="row g-3 align-items-end">
+            <div class="row g-3 align-items-end mb-4">
               <div class="col-md-5">
-                <label for="student-search" class="form-label">Search by Name or Email</label>
-                <input type="search" id="student-search" name="search" class="form-control" placeholder="Enter student name or email" />
+                <label for="student-search" class="form-label fw-semibold small"><i class="bi bi-search me-1"></i> Search by Name or Email</label>
+                <input type="search" id="student-search" name="search" class="form-control rounded-3" placeholder="Search student name or email..." />
               </div>
               <div class="col-md-4">
-                <label for="course-filter" class="form-label">Filter by Course</label>
-                <select id="course-filter" name="course" class="form-select">
+                <label for="course-filter" class="form-label fw-semibold small"><i class="bi bi-funnel me-1"></i> Filter by Course</label>
+                <select id="course-filter" name="course" class="form-select rounded-3">
                   <option value="">All Courses</option>
                   <option value="Information Technology">Information Technology</option>
                   <option value="Computer Engineering">Computer Engineering</option>
@@ -75,47 +82,56 @@
                 </select>
               </div>
               <div class="col-md-3">
-                <label for="student-sort" class="form-label">Sort Students</label>
-                <select id="student-sort" class="form-select"><option value="name-asc">Name: A to Z</option><option value="name-desc">Name: Z to A</option><option value="year-asc">Year: low to high</option></select>
+                <label for="student-sort" class="form-label fw-semibold small"><i class="bi bi-sort-down me-1"></i> Sort By</label>
+                <select id="student-sort" class="form-select rounded-3">
+                  <option value="name-asc">Name: A to Z</option>
+                  <option value="name-desc">Name: Z to A</option>
+                  <option value="year-asc">Year: Low to High</option>
+                </select>
               </div>
             </div>
           </form>
-          <p class="data-status mt-3 mb-0" role="status" aria-live="polite">Loading student records...</p>
+
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <p class="data-status mb-0 text-secondary small fw-medium" role="status" aria-live="polite">Loading student records...</p>
+          </div>
+
+          <div class="table-responsive rounded-3 border mb-3">
+            <table class="table table-hover align-middle mb-0">
+              <thead class="table-light">
+                <tr>
+                  <th scope="col">Student ID</th>
+                  <th scope="col">Full Name</th>
+                  <th scope="col">Email Address</th>
+                  <th scope="col">Course</th>
+                  <th scope="col">Year</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody data-results></tbody>
+            </table>
+          </div>
+
+          <nav aria-label="Student pagination">
+            <div class="pagination-controls" data-pagination></div>
+          </nav>
         </div>
       </div>
-
-      <h5 class="fw-bold mb-3">Student Records</h5>
-      <div class="table-responsive">
-        <table class="table table-hover align-middle">
-          <caption class="visually-hidden">Registered Student Information</caption>
-          <thead>
-            <tr>
-              <th scope="col">Student ID</th>
-              <th scope="col">Name</th>
-              <th scope="col">Email</th>
-              <th scope="col">Course</th>
-              <th scope="col">Year</th>
-              <th scope="col">Action</th>
-            </tr>
-          </thead>
-          <tbody data-results></tbody>
-        </table>
-      </div>
-      <nav class="mt-4" aria-label="Student record pagination"><div class="pagination-controls" data-pagination></div></nav>
     </main>
 
-    <footer class="site-footer py-3">
-      <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+    <footer class="border-top py-3 mt-auto bg-body px-4">
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
         <span class="text-secondary small">&copy; 2026 StudentHub. All rights reserved.</span>
         <nav class="d-flex gap-3 small">
-          <a href="contact.html" class="nav-link">Contact</a>
-          <a href="faq.html" class="nav-link">FAQ</a>
-          <a href="feedback.html" class="nav-link">Feedback</a>
+          <a href="contact.html" class="text-secondary text-decoration-none">Contact</a>
+          <a href="faq.html" class="text-secondary text-decoration-none">FAQ</a>
+          <a href="feedback.html" class="text-secondary text-decoration-none">Feedback</a>
         </nav>
       </div>
     </footer>
   </div>
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

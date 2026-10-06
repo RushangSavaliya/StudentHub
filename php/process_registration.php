@@ -7,17 +7,17 @@ function renderPage(string $title, string $heading, string $message, array $erro
     $safeHeading = htmlspecialchars($heading, ENT_QUOTES, 'UTF-8');
     $safeMessage = htmlspecialchars($message, ENT_QUOTES, 'UTF-8');
 
-    echo '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>StudentHub | ' . $safeTitle . '</title><link rel="stylesheet" href="../css/style.css"></head><body><main class="container py-5"><section class="card mx-auto" style="max-width: 680px;"><div class="card-body p-4"><h1 class="h3 fw-bold">' . $safeHeading . '</h1><p>' . $safeMessage . '</p>';
+    echo '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>StudentHub | ' . $safeTitle . '</title><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"><link rel="stylesheet" href="../css/style.css"><script src="../js/script.js" defer></script></head><body><main class="container py-5"><div class="card p-4 p-md-5 mx-auto" style="max-width: 680px;"><div class="card-body p-0"><h1 class="h3 fw-bold mb-3">' . $safeHeading . '</h1><p class="text-body-secondary lead mb-4">' . $safeMessage . '</p>';
 
     if ($errors) {
-        echo '<ul>';
+        echo '<div class="alert alert-danger mb-4"><ul class="mb-0 ps-3">';
         foreach ($errors as $error) {
             echo '<li>' . htmlspecialchars($error, ENT_QUOTES, 'UTF-8') . '</li>';
         }
-        echo '</ul>';
+        echo '</ul></div>';
     }
 
-    echo '<a class="btn btn-sh-primary" href="../pages/register.html">Back to Registration</a></div></section></main></body></html>';
+    echo '<a class="btn btn-primary" href="../pages/register.html">&larr; Back to Registration</a></div></div></main></body></html>';
 }
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {

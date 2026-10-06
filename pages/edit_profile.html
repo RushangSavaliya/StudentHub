@@ -3,131 +3,140 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Edit StudentHub student profile information." />
+<meta name="description" content="Edit StudentHub student profile." />
 <title>StudentHub | Edit Profile</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 <link rel="stylesheet" href="../css/style.css" />
 <script src="../js/script.js" defer></script>
 </head>
-<body>
+<body class="bg-body">
 <a class="skip-link" href="#main">Skip to main content</a>
-<div class="d-flex">
-  <div class="sidebar-overlay"></div>
 
-  <aside class="dashboard-sidebar flex-column">
-    <a class="sidebar-brand mb-3" href="student_dash.html">
-      <img src="../img/logo.jpg" alt="StudentHub logo" />
-      <div>
-        <strong>StudentHub</strong>
-        <small>Student Portal</small>
-      </div>
-    </a>
-    <nav class="sidebar-nav flex-column gap-1">
-      <a href="student_dash.html" class="nav-link">Dashboard</a>
-      <a href="profile.html" class="nav-link active" aria-current="page">Profile</a>
-      <a href="event.html" class="nav-link">Events</a>
-      <a href="feedback.html" class="nav-link">Feedback</a>
-      <a href="contact.html" class="nav-link">Contact</a>
-      <a href="faq.html" class="nav-link">FAQ</a>
-      <a href="login.html" class="nav-link">Logout</a>
+<div class="d-flex min-vh-100">
+  <!-- Native Bootstrap Responsive Offcanvas Sidebar -->
+  <div class="offcanvas-lg offcanvas-start bg-body-tertiary border-end dashboard-sidebar-container p-3 flex-column" tabindex="-1" id="dashboardSidebar" style="width:260px;">
+    <div class="d-flex align-items-center justify-content-between mb-4 pb-2 border-bottom">
+      <a class="d-flex align-items-center gap-2 text-body text-decoration-none fw-bold" href="student_dash.html">
+        <img class="rounded-3 border shadow-sm" src="../img/logo.jpg" alt="StudentHub logo" style="width:36px;height:36px;object-fit:cover;" />
+        <div>
+          <div class="lh-1 fs-5">StudentHub</div>
+          <small class="text-secondary fw-normal" style="font-size:0.75rem">Student Portal</small>
+        </div>
+      </a>
+      <button type="button" class="btn-close d-lg-none" data-bs-dismiss="offcanvas" data-bs-target="#dashboardSidebar" aria-label="Close"></button>
+    </div>
+
+    <nav class="dashboard-sidebar-nav nav flex-column gap-1 flex-grow-1">
+      <a href="student_dash.html" class="nav-link"><i class="bi bi-grid-fill"></i> Dashboard</a>
+      <a href="profile.html" class="nav-link active" aria-current="page"><i class="bi bi-person-badge"></i> My Profile</a>
+      <a href="event.html" class="nav-link"><i class="bi bi-calendar-event"></i> Campus Events</a>
+      <a href="feedback.html" class="nav-link"><i class="bi bi-chat-dots"></i> Feedback</a>
+      <a href="contact.html" class="nav-link"><i class="bi bi-headset"></i> Support</a>
+      <a href="faq.html" class="nav-link"><i class="bi bi-question-circle"></i> FAQ</a>
+      <a href="login.html" class="nav-link text-danger mt-3"><i class="bi bi-box-arrow-right"></i> Sign Out</a>
     </nav>
-  </aside>
+  </div>
 
-  <div class="flex-grow-1 d-flex flex-column min-vh-100">
-    <nav class="navbar d-lg-none dashboard-mobile-nav">
-      <div class="container-fluid">
-        <button class="sidebar-toggle-btn btn p-1" aria-label="Toggle sidebar">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-        </button>
-        <a class="navbar-brand mb-0 fw-bold" href="student_dash.html">StudentHub</a>
-      </div>
+  <!-- Main Content Area -->
+  <div class="flex-grow-1 d-flex flex-column min-vh-100 overflow-hidden">
+    <!-- Top Bar for Mobile -->
+    <nav class="navbar d-lg-none bg-body border-bottom px-3 py-2">
+      <button class="btn btn-outline-secondary btn-sm rounded-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#dashboardSidebar" aria-controls="dashboardSidebar" aria-label="Open Sidebar">
+        <i class="bi bi-list fs-5"></i>
+      </button>
+      <span class="fw-bold">StudentHub</span>
     </nav>
 
-    <main id="main" class="dashboard-content flex-grow-1">
+    <main id="main" class="p-3 p-lg-4 flex-grow-1">
       <nav aria-label="breadcrumb" class="mb-3">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Home</a></li>
-          <li class="breadcrumb-item"><a href="student_dash.html" class="nav-link">Dashboard</a></li>
-          <li class="breadcrumb-item"><a href="profile.html" class="nav-link">Profile</a></li>
+          <li class="breadcrumb-item"><a href="../index.html" class="text-secondary text-decoration-none">Home</a></li>
+          <li class="breadcrumb-item"><a href="student_dash.html" class="text-secondary text-decoration-none">Dashboard</a></li>
+          <li class="breadcrumb-item"><a href="profile.html" class="text-secondary text-decoration-none">Profile</a></li>
           <li class="breadcrumb-item active" aria-current="page">Edit Profile</li>
         </ol>
       </nav>
 
-      <header class="d-flex flex-wrap justify-content-between align-items-center mb-4">
-        <h1 class="h3 fw-bold mb-0">Edit Profile</h1>
-        <span class="text-secondary">Student Name</span>
+      <header class="d-flex flex-wrap justify-content-between align-items-center mb-4 pb-3 border-bottom gap-2">
+        <div>
+          <h1 class="h3 fw-bold mb-1">Edit Student Profile</h1>
+          <p class="text-secondary mb-0">Update your verified contact details and academic program.</p>
+        </div>
       </header>
 
-      <div class="profile-panel">
-        <form action="#" method="post">
-          <fieldset class="mb-4">
-            <legend class="fs-6 fw-bold mb-3">Personal Information</legend>
+      <div class="card p-4 p-md-5 rounded-4 shadow-sm border bg-body mb-4">
+        <form action="profile.html" method="get">
+          <div class="p-3 mb-4 rounded-3 border bg-body-tertiary">
+            <h6 class="fw-bold mb-3 text-primary"><i class="bi bi-person-lines-fill me-1"></i> Personal Information</h6>
             <div class="row g-3">
               <div class="col-md-6">
-                <label for="full-name" class="form-label">Full Name</label>
-                <input type="text" id="full-name" name="full_name" class="form-control" value="Student Name" required />
+                <label for="full-name" class="form-label fw-semibold small">Full Name</label>
+                <input type="text" id="full-name" name="full_name" class="form-control rounded-3" value="Rahul Sharma" required />
               </div>
               <div class="col-md-6">
-                <label for="email" class="form-label">Email Address</label>
-                <input type="email" id="email" name="email" class="form-control" value="student@example.com" required />
+                <label for="email" class="form-label fw-semibold small">Email Address</label>
+                <input type="email" id="email" name="email" class="form-control rounded-3" value="rahul.sharma@example.com" required />
               </div>
               <div class="col-md-6">
-                <label for="mobile" class="form-label">Mobile Number</label>
-                <input type="tel" id="mobile" name="mobile" class="form-control" value="9876543210" required />
+                <label for="mobile" class="form-label fw-semibold small">Mobile Number</label>
+                <input type="tel" id="mobile" name="mobile" class="form-control rounded-3" value="9876543210" required />
               </div>
               <div class="col-md-6">
-                <label for="gender" class="form-label">Gender</label>
-                <select id="gender" name="gender" class="form-select">
+                <label for="gender" class="form-label fw-semibold small">Gender</label>
+                <select id="gender" name="gender" class="form-select rounded-3">
                   <option value="male" selected>Male</option>
                   <option value="female">Female</option>
                   <option value="other">Other</option>
                 </select>
               </div>
             </div>
-          </fieldset>
-          <fieldset class="mb-4">
-            <legend class="fs-6 fw-bold mb-3">Academic Information</legend>
+          </div>
+
+          <div class="p-3 mb-4 rounded-3 border bg-body-tertiary">
+            <h6 class="fw-bold mb-3 text-primary"><i class="bi bi-book-half me-1"></i> Academic Program</h6>
             <div class="row g-3">
               <div class="col-md-6">
-                <label for="course" class="form-label">Course</label>
-                <select id="course" name="course" class="form-select" required>
-                  <option value="information-technology" selected>Information Technology</option>
-                  <option value="computer-engineering">Computer Engineering</option>
+                <label for="course" class="form-label fw-semibold small">Enrolled Program</label>
+                <select id="course" name="course" class="form-select rounded-3" required>
+                  <option value="computer-engineering" selected>Computer Engineering</option>
+                  <option value="information-technology">Information Technology</option>
                   <option value="computer-science">Computer Science</option>
                 </select>
               </div>
               <div class="col-md-6">
-                <label for="year" class="form-label">Academic Year</label>
-                <select id="year" name="year" class="form-select" required>
-                  <option value="1">First Year</option>
-                  <option value="2">Second Year</option>
-                  <option value="3" selected>Third Year</option>
-                  <option value="4">Fourth Year</option>
+                <label for="year" class="form-label fw-semibold small">Academic Year</label>
+                <select id="year" name="year" class="form-select rounded-3" required>
+                  <option value="1">First Year (Sem 1-2)</option>
+                  <option value="2" selected>Second Year (Sem 3-4)</option>
+                  <option value="3">Third Year (Sem 5-6)</option>
+                  <option value="4">Fourth Year (Sem 7-8)</option>
                 </select>
               </div>
             </div>
-          </fieldset>
-          <div class="d-flex gap-2">
-            <button type="submit" class="btn btn-sh-primary btn-sm">Save Changes</button>
-            <button type="reset" class="btn btn-sh-soft btn-sm">Reset</button>
-            <a class="btn btn-sh-soft btn-sm" href="profile.html">Cancel</a>
+          </div>
+
+          <div class="d-flex gap-2 pt-2">
+            <button type="submit" class="btn btn-primary rounded-pill px-4 shadow-sm">Save Profile Changes &rarr;</button>
+            <a class="btn btn-outline-secondary rounded-pill px-3" href="profile.html">Cancel</a>
           </div>
         </form>
       </div>
     </main>
 
-    <footer class="site-footer py-3">
-      <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+    <footer class="border-top py-3 mt-auto bg-body px-4">
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
         <span class="text-secondary small">&copy; 2026 StudentHub. All rights reserved.</span>
         <nav class="d-flex gap-3 small">
-          <a href="contact.html" class="nav-link">Contact</a>
-          <a href="faq.html" class="nav-link">FAQ</a>
-          <a href="feedback.html" class="nav-link">Feedback</a>
+          <a href="contact.html" class="text-secondary text-decoration-none">Contact</a>
+          <a href="faq.html" class="text-secondary text-decoration-none">FAQ</a>
+          <a href="feedback.html" class="text-secondary text-decoration-none">Feedback</a>
         </nav>
       </div>
     </footer>
   </div>
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

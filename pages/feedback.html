@@ -6,85 +6,88 @@
   <meta name="description" content="Submit feedback for StudentHub." />
   <title>StudentHub | Feedback</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
   <link rel="stylesheet" href="../css/style.css" />
   <script src="../js/script.js" defer></script>
 </head>
 <body class="d-flex flex-column min-vh-100">
 
-  <nav class="navbar navbar-expand-lg sticky-top">
+  <nav class="navbar navbar-expand-lg sticky-top bg-body border-bottom">
     <div class="container">
-      <a class="navbar-brand" href="../index.html">
+      <a class="navbar-brand d-flex align-items-center gap-2 fw-bold text-body" href="../index.html">
         <img src="../img/logo.jpg" alt="StudentHub logo" />
-        <div class="brand-text">
-          <strong>StudentHub</strong>
-          <small>Student Management Portal</small>
+        <div>
+          <div class="lh-1 fs-5">StudentHub</div>
+          <small class="text-secondary fw-normal" style="font-size:0.75rem">Student Portal</small>
         </div>
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="mainNav">
         <ul class="navbar-nav ms-auto me-3 gap-1">
-          <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="event.html">Events</a></li>
-          <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
-          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-          <li class="nav-item"><a class="nav-link active" href="feedback.html" aria-current="page">Feedback</a></li>
+          <li class="nav-item"><a class="nav-link fw-semibold" href="../index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link fw-semibold" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link fw-semibold" href="event.html">Events</a></li>
+          <li class="nav-item"><a class="nav-link fw-semibold" href="faq.html">FAQ</a></li>
+          <li class="nav-item"><a class="nav-link fw-semibold" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link active fw-semibold" aria-current="page" href="feedback.html">Feedback</a></li>
         </ul>
         <div class="d-flex align-items-center gap-2">
-          <a class="btn btn-outline-sh btn-sm" href="login.html">Login</a>
-          <a class="btn btn-sh-primary btn-sm" href="register.html">Register</a>
-
+          <a class="btn btn-outline-secondary btn-sm rounded-pill px-3" href="login.html">Login</a>
+          <a class="btn btn-primary btn-sm rounded-pill px-3" href="register.html">Register</a>
         </div>
       </div>
     </div>
   </nav>
 
-  <main class="container flex-grow-1">
-    <nav aria-label="Breadcrumb" class="mb-3">
+  <main class="container flex-grow-1 py-4">
+    <nav aria-label="breadcrumb" class="mb-3">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+        <li class="breadcrumb-item"><a href="../index.html" class="text-secondary text-decoration-none">Home</a></li>
         <li class="breadcrumb-item active" aria-current="page">Feedback</li>
       </ol>
     </nav>
 
-    <section class="mb-4">
-      <div class="section-title mb-3">
-        <h4 class="fw-bold">Feedback</h4>
-        <p>Your feedback helps us improve the StudentHub portal.</p>
+    <section class="mb-4" style="max-width: 740px; margin: 0 auto;">
+      <div class="mb-4 text-center">
+        <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-1 rounded-pill mb-2">
+          <i class="bi bi-chat-heart-fill me-1"></i> Continuous Improvement
+        </span>
+        <h2 class="fw-bold">Your Feedback Matters</h2>
+        <p class="text-secondary lead">Help us enhance your portal experience by sharing your honest feedback and feature suggestions.</p>
       </div>
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title fw-bold mb-3">Feedback Form</h5>
+
+      <div class="card p-4 p-md-5 rounded-4 shadow-sm border bg-body">
+        <div class="card-body p-0">
           <form action="#" method="post">
             <div class="row g-3">
               <div class="col-md-6">
-                <label for="fb-name" class="form-label">Full Name</label>
-                <input type="text" class="form-control" id="fb-name" name="name" autocomplete="name" required />
+                <label for="fb-name" class="form-label fw-semibold small">Full Name</label>
+                <input type="text" class="form-control rounded-3" id="fb-name" name="name" autocomplete="name" placeholder="Enter your name" required />
               </div>
               <div class="col-md-6">
-                <label for="fb-email" class="form-label">Email Address</label>
-                <input type="email" class="form-control" id="fb-email" name="email" autocomplete="email" required />
+                <label for="fb-email" class="form-label fw-semibold small">Email Address</label>
+                <input type="email" class="form-control rounded-3" id="fb-email" name="email" autocomplete="email" placeholder="student@example.com" required />
               </div>
               <div class="col-12">
-                <label for="rating" class="form-label">Overall Experience</label>
-                <select class="form-select" id="rating" name="rating" required>
+                <label for="rating" class="form-label fw-semibold small">Overall Portal Experience</label>
+                <select class="form-select rounded-3" id="rating" name="rating" required>
                   <option value="">Select a rating</option>
-                  <option value="excellent">Excellent</option>
-                  <option value="good">Good</option>
-                  <option value="average">Average</option>
-                  <option value="poor">Poor</option>
+                  <option value="excellent">⭐️⭐️⭐️⭐️⭐️ Excellent — Intuitive and fast</option>
+                  <option value="good">⭐️⭐️⭐️⭐️ Good — Works as expected</option>
+                  <option value="average">⭐️⭐️⭐️ Average — Needs minor adjustments</option>
+                  <option value="poor">⭐️⭐️ Needs Improvement</option>
                 </select>
               </div>
               <div class="col-12">
-                <label for="feedback" class="form-label">Your Feedback</label>
-                <textarea class="form-control" id="feedback" name="feedback" rows="5" required></textarea>
+                <label for="feedback" class="form-label fw-semibold small">Detailed Feedback</label>
+                <textarea class="form-control rounded-3" id="feedback" name="feedback" rows="5" placeholder="Share your experience, suggest improvements, or report bugs..." required></textarea>
               </div>
-              <div class="col-12">
+              <div class="col-12 pt-2">
                 <div class="d-flex gap-2">
-                  <input class="btn btn-sh-primary" type="submit" value="Submit Feedback" />
-                  <input class="btn btn-outline-sh" type="reset" value="Clear" />
+                  <button class="btn btn-primary rounded-pill px-4 shadow-sm" type="submit">Submit Feedback &rarr;</button>
+                  <button class="btn btn-outline-secondary rounded-pill px-3" type="reset">Clear</button>
                 </div>
               </div>
             </div>
@@ -94,13 +97,13 @@
     </section>
   </main>
 
-  <footer class="site-footer py-3 mt-auto">
+  <footer class="border-top py-3 mt-auto bg-body">
     <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
       <span class="text-secondary small">&copy; 2026 StudentHub. All rights reserved.</span>
       <nav class="d-flex gap-3 small">
-        <a href="contact.html">Contact</a>
-        <a href="faq.html">FAQ</a>
-        <a href="feedback.html">Feedback</a>
+        <a href="contact.html" class="text-secondary text-decoration-none">Contact</a>
+        <a href="faq.html" class="text-secondary text-decoration-none">FAQ</a>
+        <a href="feedback.html" class="text-secondary text-decoration-none">Feedback</a>
       </nav>
     </div>
   </footer>

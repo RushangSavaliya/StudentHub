@@ -6,138 +6,181 @@
     <meta name="description" content="StudentHub student portal home page." />
     <title>StudentHub | Home</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="css/style.css?v=2" />
-    <script src="js/script.js?v=2" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/script.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to main content</a>
 
-    <!-- Header -->
-    <nav class="navbar navbar-expand-lg sticky-top">
+    <!-- Header Navigation -->
+    <nav class="navbar navbar-expand-lg sticky-top bg-body border-bottom">
       <div class="container">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand d-flex align-items-center gap-2 fw-bold text-body" href="index.html">
           <img src="img/logo.jpg" alt="StudentHub logo" />
-          <div class="brand-text">
-            <strong>StudentHub</strong>
-            <small>Student Management Portal</small>
+          <div>
+            <div class="lh-1 fs-5">StudentHub</div>
+            <small class="text-secondary fw-normal" style="font-size:0.75rem">Student Portal</small>
           </div>
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="mainNav">
           <ul class="navbar-nav ms-auto me-3 gap-1">
-            <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="pages/about.html">About</a></li>
-            <li class="nav-item"><a class="nav-link" href="pages/event.html">Events</a></li>
-            <li class="nav-item"><a class="nav-link" href="pages/faq.html">FAQ</a></li>
-            <li class="nav-item"><a class="nav-link" href="pages/contact.html">Contact</a></li>
-            <li class="nav-item"><a class="nav-link" href="pages/feedback.html">Feedback</a></li>
+            <li class="nav-item"><a class="nav-link active fw-semibold" aria-current="page" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link fw-semibold" href="pages/about.html">About</a></li>
+            <li class="nav-item"><a class="nav-link fw-semibold" href="pages/event.html">Events</a></li>
+            <li class="nav-item"><a class="nav-link fw-semibold" href="pages/faq.html">FAQ</a></li>
+            <li class="nav-item"><a class="nav-link fw-semibold" href="pages/contact.html">Contact</a></li>
+            <li class="nav-item"><a class="nav-link fw-semibold" href="pages/feedback.html">Feedback</a></li>
           </ul>
           <div class="d-flex align-items-center gap-2">
-            <a class="btn btn-outline-sh btn-sm" href="pages/login.html">Login</a>
-            <a class="btn btn-sh-primary btn-sm" href="pages/register.html">Register</a>
+            <a class="btn btn-outline-secondary btn-sm rounded-pill px-3" href="pages/login.html">Login</a>
+            <a class="btn btn-primary btn-sm rounded-pill px-3" href="pages/register.html">Register</a>
           </div>
         </div>
       </div>
     </nav>
 
     <!-- Main Content -->
-    <main id="main" class="container py-4">
-      <!-- Hero -->
-      <section class="hero-section mb-4">
+    <main id="main" class="container py-4 py-lg-5">
+      <!-- Hero Section -->
+      <section class="card border shadow-sm p-4 p-lg-5 mb-4 rounded-4 bg-body">
         <div class="row align-items-center g-4">
           <div class="col-lg-7">
-            <p class="section-label mb-2">Student Portal</p>
-            <h1 class="display-6 fw-bold mb-2">StudentHub Portal</h1>
-            <p class="mb-3 text-secondary">Your College Student Management Portal</p>
-            <a class="btn btn-sh-primary" href="pages/register.html">Get Started</a>
+            <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-2 rounded-pill mb-3">
+              <i class="bi bi-mortarboard-fill me-1"></i> Campus Student Portal
+            </span>
+            <h1 class="display-6 fw-bold mb-3">Welcome to StudentHub</h1>
+            <p class="lead text-secondary mb-4">A unified portal for college students and administrators to manage academic profiles, workshop registrations, events, and support.</p>
+            <div class="d-flex flex-wrap gap-2">
+              <a class="btn btn-primary px-4 py-2 rounded-pill shadow-sm" href="pages/register.html">Get Started &rarr;</a>
+              <a class="btn btn-outline-secondary px-4 py-2 rounded-pill" href="pages/about.html">Explore Portal</a>
+            </div>
           </div>
           <div class="col-lg-5">
-            <div class="hero-visual">
+            <div class="hero-visual border shadow-sm">
               <img src="img/student-collaboration.jpg" alt="Students collaborating around a laptop" />
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Practical 4: dismissible notification banner -->
-      <div class="notification-bar d-flex align-items-center justify-content-between gap-3 p-3 mb-4" role="status">
-        <span class="fw-semibold">Workshop registration is open</span>
-        <button type="button" class="btn btn-outline-sh btn-sm" data-notification-dismiss aria-label="Dismiss workshop registration notification">Dismiss</button>
+      <!-- Practical 4: Dismissible Notification Banner -->
+      <div class="alert alert-primary alert-dismissible fade show d-flex align-items-center justify-content-between p-3 rounded-4 shadow-sm mb-4 border" role="alert">
+        <div class="d-flex align-items-center gap-2">
+          <i class="bi bi-bell-fill fs-5"></i>
+          <div>
+            <strong>Notice:</strong> Workshop registration for the upcoming semester is now officially open!
+          </div>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
 
-      <!-- Practical 4: keyboard-friendly content slider -->
-      <section class="mb-4">
-        <div class="section-title mb-3">
-          <h4 class="fw-bold">Upcoming Events</h4>
-          <p>Preview the main activities planned for students.</p>
-        </div>
-        <div class="event-slider" data-slider tabindex="0" aria-label="Upcoming events slider">
-          <p class="visually-hidden" data-slider-status aria-live="polite"></p>
-          <article class="card event-slide h-100">
-            <img class="event-image" src="img/web-development-workshop.jpg" alt="Laptop displaying code for a web development workshop" />
-            <div class="card-body">
-              <h5 class="card-title fw-bold">Web Development Workshop</h5>
-              <p class="card-text">Date &amp; short description</p>
-              <a href="pages/event.html" class="link-btn">View Event &rarr;</a>
-            </div>
-          </article>
-          <article class="card event-slide h-100" hidden>
-            <img class="event-image" src="img/student-collaboration.jpg" alt="Students collaborating during a technical quiz" />
-            <div class="card-body">
-              <h5 class="card-title fw-bold">Technical Quiz Competition</h5>
-              <p class="card-text">Date &amp; short description</p>
-              <a href="pages/event.html" class="link-btn">View Event &rarr;</a>
-            </div>
-          </article>
-          <article class="card event-slide h-100" hidden>
-            <img class="event-image" src="img/campus-sports.jpg" alt="Student playing basketball during a campus sports event" />
-            <div class="card-body">
-              <h5 class="card-title fw-bold">Annual Sports Event</h5>
-              <p class="card-text">Date &amp; short description</p>
-              <a href="pages/event.html" class="link-btn">View Event &rarr;</a>
-            </div>
-          </article>
-          <div class="slider-controls mt-3">
-            <button type="button" class="btn btn-outline-sh" data-slide-direction="-1" aria-label="Show previous event">&larr; Previous</button>
-            <button type="button" class="btn btn-sh-primary" data-slide-direction="1" aria-label="Show next event">Next &rarr;</button>
+      <!-- Practical 4: Upcoming Events Slider / Carousel -->
+      <section class="mb-5">
+        <div class="d-flex justify-content-between align-items-end mb-3">
+          <div>
+            <h3 class="fw-bold mb-1">Upcoming Events</h3>
+            <p class="text-secondary mb-0">Preview the main activities and workshops planned for students.</p>
           </div>
+          <a href="pages/event.html" class="btn btn-outline-secondary btn-sm rounded-pill px-3">View All Events &rarr;</a>
+        </div>
+
+        <div id="eventCarousel" class="carousel slide border rounded-4 shadow-sm bg-body overflow-hidden" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active p-4 p-md-5">
+              <div class="row align-items-center g-4">
+                <div class="col-md-5">
+                  <img src="img/web-development-workshop.jpg" class="d-block w-100 rounded-3 shadow-sm" alt="Web Development Workshop" style="height:220px;object-fit:cover;" />
+                </div>
+                <div class="col-md-7">
+                  <span class="badge bg-primary-subtle text-primary border border-primary-subtle mb-2">Technical Workshop</span>
+                  <h4 class="fw-bold mb-2">Web Development Workshop</h4>
+                  <p class="text-secondary mb-3">Hands-on coding workshop covering HTML, CSS, Bootstrap, JavaScript, and full-stack architecture basics.</p>
+                  <a href="pages/event.html" class="btn btn-primary btn-sm rounded-pill px-3">View Details &rarr;</a>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item p-4 p-md-5">
+              <div class="row align-items-center g-4">
+                <div class="col-md-5">
+                  <img src="img/student-collaboration.jpg" class="d-block w-100 rounded-3 shadow-sm" alt="Technical Quiz" style="height:220px;object-fit:cover;" />
+                </div>
+                <div class="col-md-7">
+                  <span class="badge bg-info-subtle text-info border border-info-subtle mb-2">Competition</span>
+                  <h4 class="fw-bold mb-2">Technical Quiz Competition</h4>
+                  <p class="text-secondary mb-3">Annual college-wide computing and algorithmic challenge with awards and certificates for winners.</p>
+                  <a href="pages/event.html" class="btn btn-primary btn-sm rounded-pill px-3">View Details &rarr;</a>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item p-4 p-md-5">
+              <div class="row align-items-center g-4">
+                <div class="col-md-5">
+                  <img src="img/campus-sports.jpg" class="d-block w-100 rounded-3 shadow-sm" alt="Annual Sports Event" style="height:220px;object-fit:cover;" />
+                </div>
+                <div class="col-md-7">
+                  <span class="badge bg-success-subtle text-success border border-success-subtle mb-2">Sports Meet</span>
+                  <h4 class="fw-bold mb-2">Annual Sports Event</h4>
+                  <p class="text-secondary mb-3">Inter-department sports tournament and athletics meet celebrating collegiate athletic talent.</p>
+                  <a href="pages/event.html" class="btn btn-primary btn-sm rounded-pill px-3">View Details &rarr;</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#eventCarousel" data-bs-slide="prev" aria-label="Previous">
+            <span class="carousel-control-prev-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#eventCarousel" data-bs-slide="next" aria-label="Next">
+            <span class="carousel-control-next-icon bg-dark rounded-circle p-2" aria-hidden="true"></span>
+          </button>
         </div>
       </section>
 
-      <!-- About Card -->
-      <section class="mb-4">
-        <div class="card">
-          <div class="card-body">
-            <h4 class="card-title fw-bold">About StudentHub</h4>
-            <p class="card-text">Centralized portal for students and administrators.</p>
-            <button type="button" class="btn btn-sh-soft" data-modal-open="studenthub-modal">Learn More</button>
+      <!-- Practical 4: Accessible Modal Card -->
+      <section class="card border rounded-4 shadow-sm p-4 bg-body">
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+          <div>
+            <h4 class="fw-bold mb-1">About StudentHub Portal</h4>
+            <p class="text-secondary mb-0">Learn more about portal features, security, and student service guidelines.</p>
           </div>
+          <button type="button" class="btn btn-outline-secondary rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#studenthubModal">
+            Learn More <i class="bi bi-arrow-right ms-1"></i>
+          </button>
         </div>
       </section>
     </main>
 
-    <!-- Practical 4: accessible modal popup -->
-    <div class="sh-modal" id="studenthub-modal" hidden>
-      <section class="sh-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="studenthub-modal-title">
-        <div class="d-flex justify-content-between align-items-start gap-3">
-          <h2 id="studenthub-modal-title" class="h4 fw-bold mb-2">Welcome to StudentHub</h2>
-          <button type="button" class="btn-close" data-modal-close aria-label="Close welcome dialog"></button>
+    <!-- Native Bootstrap 5.3 Modal Dialog -->
+    <div class="modal fade" id="studenthubModal" tabindex="-1" aria-labelledby="studenthubModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-4 shadow border">
+          <div class="modal-header border-0 pb-0">
+            <h5 class="modal-title fw-bold" id="studenthubModalLabel">Welcome to StudentHub</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body text-secondary">
+            <p>StudentHub is an integrated platform designed for students and administrators to seamlessly manage academic records, event schedules, feedback submissions, and department communications.</p>
+            <p class="mb-0">All data is securely validated and encrypted for student privacy.</p>
+          </div>
+          <div class="modal-footer border-0 pt-0">
+            <button type="button" class="btn btn-outline-secondary btn-sm rounded-pill px-3" data-bs-dismiss="modal">Close</button>
+            <a class="btn btn-primary btn-sm rounded-pill px-3" href="pages/about.html">Read About Portal</a>
+          </div>
         </div>
-        <p>StudentHub keeps student profiles, campus events, announcements, and support information together in one portal.</p>
-        <a class="btn btn-sh-primary" href="pages/about.html">Read About StudentHub</a>
-      </section>
+      </div>
     </div>
 
     <!-- Footer -->
-    <footer class="site-footer py-3 mt-auto">
+    <footer class="border-top py-3 mt-auto bg-body">
       <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
         <span class="text-secondary small">&copy; 2026 StudentHub. All rights reserved.</span>
         <nav class="d-flex gap-3 small">
-          <a href="pages/contact.html">Contact</a>
-          <a href="pages/faq.html">FAQ</a>
-          <a href="pages/feedback.html">Feedback</a>
+          <a href="pages/contact.html" class="text-secondary text-decoration-none">Contact</a>
+          <a href="pages/faq.html" class="text-secondary text-decoration-none">FAQ</a>
+          <a href="pages/feedback.html" class="text-secondary text-decoration-none">Feedback</a>
         </nav>
       </div>
     </footer>

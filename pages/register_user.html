@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Secure user account registration for StudentHub portal." />
+  <title>StudentHub | User Registration</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <script src="../js/script.js" defer></script>
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg sticky-top bg-body border-bottom">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2 fw-bold text-body" href="../index.html">
+        <img src="../img/logo.jpg" alt="StudentHub logo" />
+        <div>
+          <div class="lh-1 fs-5">StudentHub</div>
+          <small class="text-secondary fw-normal" style="font-size:0.75rem">Student Portal</small>
+        </div>
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto me-3 gap-1">
+          <li class="nav-item"><a class="nav-link fw-semibold" href="../index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link fw-semibold" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link fw-semibold" href="event.html">Events</a></li>
+          <li class="nav-item"><a class="nav-link fw-semibold" href="faq.html">FAQ</a></li>
+          <li class="nav-item"><a class="nav-link fw-semibold" href="contact.html">Contact</a></li>
+        </ul>
+        <div class="d-flex align-items-center gap-2">
+          <a class="btn btn-outline-secondary btn-sm rounded-pill px-3" href="login.html">Login</a>
+          <a class="btn btn-primary btn-sm rounded-pill px-3 active" href="register_user.html">Register</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="container flex-grow-1 py-4">
+    <nav aria-label="breadcrumb" class="mb-3">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="../index.html" class="text-secondary text-decoration-none">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">User Registration</li>
+      </ol>
+    </nav>
+
+    <section class="mb-4" style="max-width: 620px; margin: 0 auto;">
+      <div class="mb-4 text-center">
+        <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-1 rounded-pill mb-2">
+          <i class="bi bi-shield-lock-fill me-1"></i> Secure Account Creation
+        </span>
+        <h2 class="fw-bold">User Registration</h2>
+        <p class="text-secondary">Create your StudentHub login account with secure password hashing and duplicate protection.</p>
+      </div>
+
+      <div class="card mb-4 p-4 p-md-5 rounded-4 shadow-sm border bg-body">
+        <div class="card-body p-0">
+          <form id="user-registration-form" action="../php/process_user_registration.php" method="post" novalidate>
+            <div class="mb-3">
+              <label for="name" class="form-label fw-semibold small">Full Name</label>
+              <div class="input-group">
+                <span class="input-group-text bg-body-tertiary"><i class="bi bi-person"></i></span>
+                <input type="text" class="form-control" id="name" name="name" placeholder="e.g. Priya Sharma" required minlength="2" pattern="[A-Za-z]+(?:[ '-][A-Za-z]+)*" />
+              </div>
+              <div class="form-text small">Enter your legal full name (letters and spaces only).</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label fw-semibold small">Email Address</label>
+              <div class="input-group">
+                <span class="input-group-text bg-body-tertiary"><i class="bi bi-envelope"></i></span>
+                <input type="email" class="form-control" id="email" name="email" placeholder="priya@gmail.com" required />
+              </div>
+              <div class="form-text small">Must be a valid and unique email address.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="password" class="form-label fw-semibold small">Password</label>
+              <div class="input-group">
+                <span class="input-group-text bg-body-tertiary"><i class="bi bi-key"></i></span>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter password (min 8 chars)" required minlength="8" />
+              </div>
+              <div class="form-text small">Minimum 8 characters. Passwords are automatically hashed with bcrypt.</div>
+            </div>
+
+            <div class="mb-4">
+              <label for="confirm-password" class="form-label fw-semibold small">Confirm Password</label>
+              <div class="input-group">
+                <span class="input-group-text bg-body-tertiary"><i class="bi bi-check-circle"></i></span>
+                <input type="password" class="form-control" id="confirm-password" name="confirm_password" placeholder="Re-enter password" required />
+              </div>
+            </div>
+
+            <div class="d-grid gap-2 pt-2">
+              <button class="btn btn-primary rounded-pill py-2 shadow-sm fw-semibold" type="submit">
+                <i class="bi bi-person-check-fill me-1"></i> Register Account
+              </button>
+              <button class="btn btn-outline-secondary rounded-pill py-2" type="reset">
+                Clear Form
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="card p-3 p-md-4 rounded-4 shadow-sm border bg-body text-center">
+        <p class="text-secondary mb-2 small">Already registered?</p>
+        <a class="btn btn-outline-primary rounded-pill px-4 align-self-center" href="login.html">
+          Sign In to Portal &rarr;
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-top py-3 mt-auto bg-body">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+      <span class="text-secondary small">&copy; 2026 StudentHub. All rights reserved.</span>
+      <nav class="d-flex gap-3 small">
+        <a href="contact.html" class="text-secondary text-decoration-none">Contact</a>
+        <a href="faq.html" class="text-secondary text-decoration-none">FAQ</a>
+        <a href="feedback.html" class="text-secondary text-decoration-none">Feedback</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

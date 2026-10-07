@@ -1,14 +1,14 @@
 <?php
 /**
  * StudentHub - Database Connection Script
- * Practical 8: MySQL Database Connection using MySQL Statements
+ * MySQL Database Connection using MySQL Statements
  */
 
 declare(strict_types=1);
 
 $host = 'localhost';
 $username = 'root';
-$password = '';
+$password = 'root';
 $dbname = 'studenthub';
 
 // Establish MySQL connection using MySQLi

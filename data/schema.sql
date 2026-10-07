@@ -1,6 +1,6 @@
 -- =============================================================================
 -- StudentHub Database Schema
--- WEB DEVELOPMENT FRAMEWORKS · ITUE203 · Practical 8
+-- WEB DEVELOPMENT FRAMEWORKS · ITUE203
 -- =============================================================================
 
 CREATE DATABASE IF NOT EXISTS studenthub
@@ -105,3 +105,23 @@ INSERT INTO registrations (student_id, event_id) VALUES
 (4, 2),
 (5, 5),
 (6, 1);
+
+-- =============================================================================
+-- 5. Table: users (Secure User Authentication & Roles)
+-- =============================================================================
+CREATE TABLE IF NOT EXISTS users (
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(150) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    role VARCHAR(20) DEFAULT 'student',
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Seed Data: Users (Passwords hashed using password_hash('Admin@123', PASSWORD_DEFAULT) / 'Student@123')
+INSERT INTO users (id, name, email, password, role) VALUES
+(1, 'System Administrator', 'admin@studenthub.local', '$2y$10$eA0AqvY97X5cWfX5WJz8a.y7uRkVp8UvL4xO5A.lBkJv0YfIq5w3G', 'admin'),
+(2, 'Aarav Patel', 'aarav@gmail.com', '$2y$10$w09u74M8rL4P65U3i/fG9.mUqfGjZvZ0O4jV7vE9u8N0c1k7L4kO6', 'student')
+ON DUPLICATE KEY UPDATE id=id;
+

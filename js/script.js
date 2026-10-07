@@ -53,7 +53,7 @@
     setTheme(initialTheme);
   }
 
-  /* ===== 2. Registration Form Validation (Practical 5) ===== */
+  /* ===== 2. Registration Form Validation ===== */
   function initialiseRegistrationValidation() {
     const form = document.getElementById("registration-form");
     if (!form) return;

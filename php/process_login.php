@@ -22,6 +22,7 @@ if ($email === '' || $loginPassword === '' || !filter_var($email, FILTER_VALIDAT
 }
 
 require_once __DIR__ . '/db_connect_mysqli.php';
+require_once __DIR__ . '/audit_log.php';
 
 $stmt = $conn->prepare('SELECT id, name, email, password, role FROM users WHERE email = ? LIMIT 1');
 if ($stmt === false) {
@@ -64,6 +65,7 @@ $_SESSION['user_name'] = $userName;
 $_SESSION['user_email'] = $userEmail;
 $_SESSION['user_role'] = $userRole;
 $_SESSION['last_activity'] = time();
+recordAudit($conn, (int) $userId, 'LOGIN', 'User signed in successfully.');
 
 $stmt->close();
 $conn->close();

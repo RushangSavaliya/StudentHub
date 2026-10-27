@@ -4,6 +4,7 @@ declare(strict_types=1);
 require_once __DIR__ . '/../php/auth_check.php';
 requireRole('admin');
 require_once __DIR__ . '/../php/db_connect_mysqli.php';
+require_once __DIR__ . '/../php/audit_log.php';
 
 const MAX_POSTER_SIZE = 2097152;
 const POSTER_DIRECTORY = __DIR__ . '/../uploads/events';
@@ -127,6 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         if ($statement->execute() && $statement->affected_rows > 0) {
                             removePoster($event['poster_path'] ?? null);
                             $statement->close();
+                            recordAudit($conn, (int) $_SESSION['user_id'], 'DELETE_EVENT', 'Deleted event #' . $id . '.');
                             redirectWithStatus('deleted');
                         }
                         $error = 'Unable to delete the event.';
@@ -208,6 +210,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             $newPoster
                         );
                         if ($statement->execute()) {
+                            recordAudit($conn, (int) $_SESSION['user_id'], 'ADD_EVENT', 'Added event "' . $formValues['title'] . '".');
                             $statement->close();
                             redirectWithStatus($successStatus);
                         }
@@ -229,6 +232,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 removePoster($oldPoster);
                             }
                             $statement->close();
+                            recordAudit($conn, (int) $_SESSION['user_id'], 'UPDATE_EVENT', 'Updated event #' . $id . '.');
                             redirectWithStatus($successStatus);
                         }
                         removePoster($newPoster);

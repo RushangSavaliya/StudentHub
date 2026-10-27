@@ -4,6 +4,7 @@ declare(strict_types=1);
 require_once __DIR__ . '/../php/auth_check.php';
 requireRole('admin');
 require_once __DIR__ . '/../php/db_connect_mysqli.php';
+require_once __DIR__ . '/../php/audit_log.php';
 
 function h(mixed $value): string
 {
@@ -76,6 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $statement->bind_param('i', $id);
                 if ($statement->execute() && $statement->affected_rows > 0) {
                     $statement->close();
+                    recordAudit($conn, (int) $_SESSION['user_id'], 'DELETE_STUDENT', 'Deleted student #' . $id . '.');
                     redirectWithStatus('deleted');
                 }
                 $error = 'Student was not deleted. The record may no longer exist.';
@@ -146,6 +148,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $formValues['gender']
                 );
                 if ($statement->execute()) {
+                    recordAudit($conn, (int) $_SESSION['user_id'], 'ADD_STUDENT', 'Added student "' . $formValues['name'] . '".');
                     $statement->close();
                     redirectWithStatus($successStatus);
                 }
@@ -165,6 +168,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $id
                 );
                 if ($statement->execute()) {
+                    recordAudit($conn, (int) $_SESSION['user_id'], 'UPDATE_STUDENT', 'Updated student #' . $id . '.');
                     $statement->close();
                     redirectWithStatus($successStatus);
                 }

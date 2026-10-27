@@ -134,6 +134,22 @@ CREATE TABLE IF NOT EXISTS users (
     PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+-- =============================================================================
+-- 6. Table: audit_logs (Administrator activity history)
+-- =============================================================================
+CREATE TABLE IF NOT EXISTS audit_logs (
+    log_id INT NOT NULL AUTO_INCREMENT,
+    user_id INT NULL,
+    action VARCHAR(100) NOT NULL,
+    details VARCHAR(255) NOT NULL,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (log_id),
+    INDEX (created_at),
+    FOREIGN KEY (user_id)
+        REFERENCES users(id)
+        ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 -- Seed Data: Users (Passwords hashed using password_hash('Admin@123', PASSWORD_DEFAULT) / 'Student@123')
 INSERT INTO users (id, name, email, password, role) VALUES
 (1, 'System Administrator', 'admin@studenthub.local', '$2y$10$eA0AqvY97X5cWfX5WJz8a.y7uRkVp8UvL4xO5A.lBkJv0YfIq5w3G', 'admin'),

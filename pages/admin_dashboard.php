@@ -1,6 +1,68 @@
 <?php
 require_once __DIR__ . "/../php/auth_check.php";
 requireRole("admin");
+require_once __DIR__ . "/../php/db_connect_mysqli.php";
+require_once __DIR__ . "/../php/audit_log.php";
+
+$dashboardError = '';
+$statistics = ['users' => 0, 'students' => 0, 'events' => 0, 'registrations' => 0];
+$countQueries = [
+    'users' => 'SELECT COUNT(*) AS total FROM users',
+    'students' => 'SELECT COUNT(*) AS total FROM students',
+    'events' => 'SELECT COUNT(*) AS total FROM events',
+    'registrations' => 'SELECT COUNT(*) AS total FROM registrations',
+];
+foreach ($countQueries as $key => $query) {
+    $result = $conn->query($query);
+    if ($result === false) {
+        $dashboardError = 'Unable to load dashboard statistics.';
+        break;
+    }
+    $statistics[$key] = (int) $result->fetch_assoc()['total'];
+    $result->free();
+}
+
+recordAudit($conn, (int) $_SESSION['user_id'], 'VIEW_DASHBOARD', 'Administrator opened the dashboard.');
+
+$latestRegistrations = [];
+$registrationResult = $conn->query(
+    'SELECT r.registered_on, s.name AS student_name, e.title AS event_title
+     FROM registrations r
+     INNER JOIN students s ON s.id = r.student_id
+     INNER JOIN events e ON e.event_id = r.event_id
+     ORDER BY r.registered_on DESC, r.reg_id DESC
+     LIMIT 5'
+);
+if ($registrationResult !== false) {
+    while ($registration = $registrationResult->fetch_assoc()) {
+        $latestRegistrations[] = $registration;
+    }
+    $registrationResult->free();
+} elseif ($dashboardError === '') {
+    $dashboardError = 'Unable to load latest registrations.';
+}
+
+$auditLogs = [];
+if (ensureAuditLogTable($conn)) {
+    $auditResult = $conn->query(
+        'SELECT a.action, a.details, a.created_at, COALESCE(u.name, \'Deleted user\') AS user_name
+         FROM audit_logs a
+         LEFT JOIN users u ON u.id = a.user_id
+         ORDER BY a.created_at DESC, a.log_id DESC
+         LIMIT 5'
+    );
+    if ($auditResult !== false) {
+        while ($log = $auditResult->fetch_assoc()) {
+            $auditLogs[] = $log;
+        }
+        $auditResult->free();
+    }
+}
+
+function dashboardH(mixed $value): string
+{
+    return htmlspecialchars((string) $value, ENT_QUOTES, 'UTF-8');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -72,6 +134,9 @@ requireRole("admin");
           </div>
         </div>
       </header>
+      <?php if ($dashboardError !== ''): ?>
+        <div class="alert alert-danger" role="alert"><?= dashboardH($dashboardError) ?></div>
+      <?php endif; ?>
 
       <!-- KPI Stat Cards -->
       <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-3 mb-4">
@@ -83,8 +148,8 @@ requireRole("admin");
                 <i class="bi bi-mortarboard-fill"></i>
               </div>
             </div>
-            <div class="display-6 fw-bold mb-1 text-primary">1,250</div>
-            <p class="text-secondary small mb-0">+48 new registrations</p>
+            <div class="display-6 fw-bold mb-1 text-primary"><?= number_format($statistics['students']) ?></div>
+            <p class="text-secondary small mb-0">Registered student records</p>
           </div>
         </div>
         <div class="col">
@@ -95,8 +160,8 @@ requireRole("admin");
                 <i class="bi bi-calendar-event-fill"></i>
               </div>
             </div>
-            <div class="display-6 fw-bold mb-1 text-info">25</div>
-            <p class="text-secondary small mb-0">6 open for registration</p>
+            <div class="display-6 fw-bold mb-1 text-info"><?= number_format($statistics['events']) ?></div>
+            <p class="text-secondary small mb-0">Events in the database</p>
           </div>
         </div>
         <div class="col">
@@ -107,8 +172,8 @@ requireRole("admin");
                 <i class="bi bi-check-circle-fill"></i>
               </div>
             </div>
-            <div class="display-6 fw-bold mb-1 text-success">840</div>
-            <p class="text-secondary small mb-0">98% attendance recorded</p>
+            <div class="display-6 fw-bold mb-1 text-success"><?= number_format($statistics['registrations']) ?></div>
+            <p class="text-secondary small mb-0">Event registrations</p>
           </div>
         </div>
         <div class="col">
@@ -119,8 +184,8 @@ requireRole("admin");
                 <i class="bi bi-chat-square-text-fill"></i>
               </div>
             </div>
-            <div class="display-6 fw-bold mb-1 text-warning">15</div>
-            <p class="text-secondary small mb-0">3 awaiting review</p>
+            <div class="display-6 fw-bold mb-1 text-warning"><?= number_format($statistics['users']) ?></div>
+            <p class="text-secondary small mb-0">Registered portal users</p>
           </div>
         </div>
       </div>
@@ -164,30 +229,39 @@ requireRole("admin");
         </div>
       </div>
 
-      <!-- Recent System Activity -->
-      <div class="card p-4 rounded-4 shadow-sm border bg-body">
-        <h5 class="fw-bold mb-3"><i class="bi bi-activity me-1 text-primary"></i> Recent Activity Stream</h5>
-        <div class="d-flex flex-column gap-2">
-          <div class="d-flex align-items-center justify-content-between p-3 rounded-3 bg-body-tertiary border">
-            <div class="d-flex align-items-center gap-2">
-              <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1">Registration</span>
-              <span class="small">New student registration received: <strong>Aarav Patel</strong> (IT • Year 1)</span>
-            </div>
-            <span class="text-secondary small">10 mins ago</span>
+      <div class="row g-4">
+        <div class="col-lg-7">
+          <div class="card h-100 p-4 rounded-4 shadow-sm border bg-body">
+            <h5 class="fw-bold mb-3"><i class="bi bi-person-check me-1 text-primary"></i> Latest Registrations</h5>
+            <?php if ($latestRegistrations === []): ?>
+              <p class="text-secondary mb-0">No registrations found.</p>
+            <?php else: ?>
+              <div class="list-group list-group-flush">
+                <?php foreach ($latestRegistrations as $registration): ?>
+                  <div class="list-group-item px-0 d-flex justify-content-between gap-3">
+                    <span><strong><?= dashboardH($registration['student_name']) ?></strong><br><small class="text-secondary"><?= dashboardH($registration['event_title']) ?></small></span>
+                    <small class="text-secondary text-nowrap"><?= dashboardH(date('d M Y, H:i', strtotime($registration['registered_on']))) ?></small>
+                  </div>
+                <?php endforeach; ?>
+              </div>
+            <?php endif; ?>
           </div>
-          <div class="d-flex align-items-center justify-content-between p-3 rounded-3 bg-body-tertiary border">
-            <div class="d-flex align-items-center gap-2">
-              <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-2 py-1">Event</span>
-              <span class="small">Event schedule verified: <strong>Web Development Workshop</strong> venue confirmed</span>
-            </div>
-            <span class="text-secondary small">1 hour ago</span>
-          </div>
-          <div class="d-flex align-items-center justify-content-between p-3 rounded-3 bg-body-tertiary border">
-            <div class="d-flex align-items-center gap-2">
-              <span class="badge bg-info-subtle text-info border border-info-subtle px-2 py-1">Security</span>
-              <span class="small">Administrator credentials and security permission roles verified</span>
-            </div>
-            <span class="text-secondary small">Yesterday</span>
+        </div>
+        <div class="col-lg-5">
+          <div class="card h-100 p-4 rounded-4 shadow-sm border bg-body">
+            <h5 class="fw-bold mb-3"><i class="bi bi-shield-check me-1 text-primary"></i> Audit Log</h5>
+            <?php if ($auditLogs === []): ?>
+              <p class="text-secondary mb-0">No audit activity found.</p>
+            <?php else: ?>
+              <div class="list-group list-group-flush">
+                <?php foreach ($auditLogs as $log): ?>
+                  <div class="list-group-item px-0">
+                    <div class="d-flex justify-content-between gap-2"><span class="badge text-bg-primary"><?= dashboardH($log['action']) ?></span><small class="text-secondary"><?= dashboardH(date('d M Y, H:i', strtotime($log['created_at']))) ?></small></div>
+                    <small><?= dashboardH($log['details']) ?> · <?= dashboardH($log['user_name']) ?></small>
+                  </div>
+                <?php endforeach; ?>
+              </div>
+            <?php endif; ?>
           </div>
         </div>
       </div>

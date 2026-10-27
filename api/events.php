@@ -4,6 +4,7 @@ declare(strict_types=1);
 require_once __DIR__ . '/../php/auth_check.php';
 requireApiRole('admin');
 require_once __DIR__ . '/../php/db_connect_mysqli.php';
+require_once __DIR__ . '/../php/audit_log.php';
 
 function respond(array $payload, int $status = 200): never
 {
@@ -107,6 +108,7 @@ if ($method === 'POST' && $action === 'add') {
     }
     $eventId = $statement->insert_id;
     $statement->close();
+    recordAudit($conn, (int) $_SESSION['user_id'], 'ADD_EVENT', 'Added event "' . $title . '" through the JSON API.');
     respond([
         'success' => true,
         'message' => 'Event added successfully without reloading the page.',
@@ -136,12 +138,14 @@ if ($method === 'PUT' || ($method === 'POST' && $action === 'update')) {
     $statement->bind_param('ssssi', $title, $eventDate, $location, $category, $eventId);
     if (!$statement->execute()) {
         $statement->close();
+        recordAudit($conn, (int) $_SESSION['user_id'], 'UPDATE_EVENT', 'Updated event #' . $eventId . ' through the JSON API.');
         respond(['success' => false, 'message' => 'Unable to update the event.'], 500);
     }
     if ($statement->affected_rows === 0) {
         $check = $conn->prepare('SELECT event_id FROM events WHERE event_id = ?');
         if ($check === false) {
             $statement->close();
+            recordAudit($conn, (int) $_SESSION['user_id'], 'DELETE_EVENT', 'Deleted event #' . $eventId . ' through the JSON API.');
             respond(['success' => false, 'message' => 'Unable to verify the updated event.'], 500);
         }
         $check->bind_param('i', $eventId);

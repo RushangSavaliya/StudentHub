@@ -80,6 +80,7 @@ CREATE TABLE events (
     event_date DATE NOT NULL,
     location VARCHAR(100),
     category VARCHAR(50),
+    poster_path VARCHAR(255),
     PRIMARY KEY (event_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 

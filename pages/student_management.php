@@ -327,7 +327,7 @@ function pageUrl(int $page, string $search, ?int $courseFilter, ?int $yearFilter
       <a href="admin_dashboard.php" class="nav-link"><i class="bi bi-speedometer2"></i> Dashboard</a>
       <a href="admin_profile.html" class="nav-link"><i class="bi bi-shield-person"></i> Admin Profile</a>
       <a href="student_management.php" class="nav-link active" aria-current="page"><i class="bi bi-people"></i> Manage Students</a>
-      <a href="manage_events.html" class="nav-link"><i class="bi bi-calendar3"></i> Manage Events</a>
+      <a href="manage_events.php" class="nav-link"><i class="bi bi-calendar3"></i> Manage Events</a>
       <a href="../php/logout.php" class="nav-link text-danger mt-3"><i class="bi bi-box-arrow-right"></i> Sign Out</a>
     </nav>
   </aside>

@@ -84,9 +84,9 @@
               <label for="password" class="form-label fw-semibold small">Password</label>
               <div class="input-group">
                 <span class="input-group-text bg-body-tertiary"><i class="bi bi-key"></i></span>
-                <input type="password" class="form-control" id="password" name="password" placeholder="Enter password (min 8 chars)" required minlength="8" />
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter a strong password" required minlength="8" pattern="(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}" />
               </div>
-              <div class="form-text small">Minimum 8 characters. Passwords are automatically hashed with bcrypt.</div>
+              <div class="form-text small">Use at least 8 characters with uppercase, lowercase, a number, and a special character.</div>
             </div>
 
             <div class="mb-4">

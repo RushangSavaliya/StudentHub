@@ -90,13 +90,21 @@ if ($email === '') {
     $errors[] = 'Please enter a valid email address.';
 }
 
+$passwordIsStrong = strlen($password) >= 8
+    && preg_match('/[A-Z]/', $password)
+    && preg_match('/[a-z]/', $password)
+    && preg_match('/[0-9]/', $password)
+    && preg_match('/[^A-Za-z0-9]/', $password);
+
 if ($password === '') {
     $errors[] = 'Password is required.';
-} elseif (strlen($password) < 8) {
-    $errors[] = 'Password must contain at least 8 characters.';
+} elseif (!$passwordIsStrong) {
+    $errors[] = 'Password must contain at least 8 characters, uppercase and lowercase letters, a number, and a special character.';
 }
 
-if ($confirmPassword !== '' && $password !== $confirmPassword) {
+if ($confirmPassword === '') {
+    $errors[] = 'Please confirm your password.';
+} elseif ($password !== $confirmPassword) {
     $errors[] = 'Passwords do not match.';
 }
 

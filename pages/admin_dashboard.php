@@ -36,6 +36,7 @@ requireRole("admin");
       <a href="admin_profile.html" class="nav-link"><i class="bi bi-shield-person"></i> Admin Profile</a>
       <a href="student_management.php" class="nav-link"><i class="bi bi-people"></i> Manage Students</a>
       <a href="manage_events.php" class="nav-link"><i class="bi bi-calendar3"></i> Manage Events</a>
+      <a href="manage_events_ajax.php" class="nav-link"><i class="bi bi-lightning"></i> AJAX Event CRUD</a>
       <a href="../php/logout.php" class="nav-link text-danger mt-3"><i class="bi bi-box-arrow-right"></i> Sign Out</a>
     </nav>
   </div>
@@ -65,7 +66,10 @@ requireRole("admin");
         </div>
         <div class="d-flex gap-2">
           <a class="btn btn-outline-secondary btn-sm rounded-pill px-3" href="student_management.php"><i class="bi bi-table me-1"></i> Records</a>
-          <a class="btn btn-primary btn-sm rounded-pill px-3" href="manage_events.php"><i class="bi bi-plus-circle me-1"></i> Add Event</a>
+          <div class="d-flex gap-2">
+            <a class="btn btn-outline-primary btn-sm rounded-pill px-3" href="manage_events_ajax.php"><i class="bi bi-lightning me-1"></i> AJAX CRUD</a>
+            <a class="btn btn-primary btn-sm rounded-pill px-3" href="manage_events.php"><i class="bi bi-plus-circle me-1"></i> Add Event</a>
+          </div>
         </div>
       </header>
 

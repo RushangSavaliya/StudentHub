@@ -55,7 +55,21 @@ INSERT INTO students (id, name, email, mobile, course_id, year, gender) VALUES
 (3, 'Isha Joshi', 'isha@gmail.com', '9876543203', 2, 1, 'female'),
 (4, 'Rohan Mehta', 'rohan@gmail.com', '9876543204', 3, 3, 'male'),
 (5, 'Neha Patel', 'neha@gmail.com', '9876543205', 2, 2, 'female'),
-(6, 'Yash Desai', 'yash@gmail.com', '9876543206', 1, 4, 'male');
+(6, 'Yash Desai', 'yash@gmail.com', '9876543206', 1, 4, 'male'),
+(7, 'Mira Trivedi', 'mira@gmail.com', '9876543207', 2, 1, 'female'),
+(8, 'Kabir Shah', 'kabir@gmail.com', '9876543208', 3, 2, 'male'),
+(9, 'Anaya Patel', 'anaya@gmail.com', '9876543209', 1, 3, 'female'),
+(10, 'Vivaan Joshi', 'vivaan@gmail.com', '9876543210', 2, 4, 'male'),
+(11, 'Sara Mehta', 'sara@gmail.com', '9876543211', 3, 1, 'female'),
+(12, 'Arjun Desai', 'arjun@gmail.com', '9876543212', 1, 2, 'male'),
+(13, 'Kavya Shah', 'kavya@gmail.com', '9876543213', 2, 3, 'female'),
+(14, 'Dhruv Patel', 'dhruv@gmail.com', '9876543214', 3, 4, 'male'),
+(15, 'Nisha Joshi', 'nisha@gmail.com', '9876543215', 1, 1, 'female'),
+(16, 'Aditya Mehta', 'aditya@gmail.com', '9876543216', 2, 2, 'male'),
+(17, 'Riya Desai', 'riya@gmail.com', '9876543217', 3, 3, 'female'),
+(18, 'Harsh Trivedi', 'harsh@gmail.com', '9876543218', 1, 4, 'male'),
+(19, 'Tanvi Shah', 'tanvi@gmail.com', '9876543219', 2, 1, 'female'),
+(20, 'Om Patel', 'om@gmail.com', '9876543220', 3, 2, 'male');
 
 -- =============================================================================
 -- 3. Table: events
@@ -124,4 +138,3 @@ INSERT INTO users (id, name, email, password, role) VALUES
 (1, 'System Administrator', 'admin@studenthub.local', '$2y$10$eA0AqvY97X5cWfX5WJz8a.y7uRkVp8UvL4xO5A.lBkJv0YfIq5w3G', 'admin'),
 (2, 'Aarav Patel', 'aarav@gmail.com', '$2y$10$w09u74M8rL4P65U3i/fG9.mUqfGjZvZ0O4jV7vE9u8N0c1k7L4kO6', 'student')
 ON DUPLICATE KEY UPDATE id=id;
-
